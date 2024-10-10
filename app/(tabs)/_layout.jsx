@@ -27,7 +27,7 @@ const AppNavigator = () => {
             name="Homepg1" 
             component={Homepg1} 
             options={{ headerShown: false,
-                tabBarStyle: { display: 'none' }
+                //tabBarStyle: { display: 'none' }
              }}
             />
             <Tab.Screen 
@@ -48,21 +48,21 @@ const AppNavigator = () => {
             name="Homepg4" 
             component={Homepg4} 
             options={{ headerShown: false,
-                tabBarStyle: { display: 'none' }
+                //tabBarStyle: { display: 'none' }
              }}
             />
             <Tab.Screen 
             name="TeacherHomePage" 
             component={TeacherHomePage} 
             options={{ headerShown: false ,
-                tabBarStyle: { display: 'none' }
+                //tabBarStyle: { display: 'none' }
             }}
             />
             <Tab.Screen 
             name="ParentHomePage" 
             component={ParentHomePage} 
             options={{ headerShown: false,
-                tabBarStyle: { display: 'none' }
+                //tabBarStyle: { display: 'none' }
              }}
             />
             <Tab.Screen 

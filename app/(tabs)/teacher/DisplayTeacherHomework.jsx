@@ -67,13 +67,13 @@ const DisplayTeacherHomework = ({ navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/teacherbackground.png')}
-            style={styles.background}
+            style={styles.dthbackground}
             resizeMode="cover"
         >
-            <View style={styles.fixedHeader}>
-            <View style={styles.headerContainer}>
+            <View style={styles.dthfixedHeader}>
+            <View style={styles.dthheaderContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
-                        <Text style={styles.backButton}>
+                        <Text style={styles.dthbackButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -83,39 +83,39 @@ const DisplayTeacherHomework = ({ navigation }) => {
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.afterHeaderImage}
+                    style={styles.dthafterHeaderImage}
                 />
             </View>
 
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <Text style={styles.title}>Home Works</Text>
+            <ScrollView contentContainerStyle={styles.dthscrollContainer}>
+                <Text style={styles.dthtitle}>Home Works</Text>
                 {activities.map(activity => (
                     <ImageBackground 
                         key={activity.id} 
                         source={require('../../assets/parentbackground.png')} 
-                        style={styles.card}
+                        style={styles.dthcard}
                         imageStyle={{ borderRadius: 10 }} 
                     >
-                        <View style={styles.cardContent}>
-                            <Text style={styles.cardTitle}>{activity.title}</Text>
+                        <View style={styles.dthcardContent}>
+                            <Text style={styles.dthcardTitle}>{activity.title}</Text>
                             <TouchableOpacity 
-                                style={styles.cardButton} 
+                                style={styles.dthcardButton} 
                                 onPress={() => navigation.navigate('Worksheet', { worksheet: activity.worksheet })} // Navigate to the worksheet
                             >
-                                <Text style={styles.buttonText}>Success</Text> 
+                                <Text style={styles.dthbuttonText}>Success</Text> 
                             </TouchableOpacity>
                         </View>
 
                         <Image 
                             source={require('../../assets/homecard.png')} 
-                            style={styles.cardBottomImage} 
+                            style={styles.dthcardBottomImage} 
                         />
                         
                         {/* Icons Section */}
                         <View style={styles.icons}>
                             {/* Edit Icon */}
                             <TouchableOpacity 
-                                style={styles.iconButton}
+                                style={styles.dthiconButton}
                                 onPress={() => navigation.navigate('EditActivity', { activityId: activity.id })} // Pass the activity ID
                             >
                                 <MaterialIcons name="edit-square" size={24} color="black" />
@@ -123,7 +123,7 @@ const DisplayTeacherHomework = ({ navigation }) => {
 
                             {/* Delete Icon */}
                             <TouchableOpacity 
-                                style={styles.iconButton} 
+                                style={styles.dthiconButton} 
                                 onPress={() => handleDeleteHomework(activity.id)} // Call delete function
                             >
                                 <Ionicons name="remove-circle" size={24} color="black" />
@@ -135,7 +135,7 @@ const DisplayTeacherHomework = ({ navigation }) => {
 
             <Image 
                 source={require('../../assets/pinkbird.png')} 
-                style={styles.pinkBird}
+                style={styles.dthpinkBird}
             />
         </ImageBackground>
     );
@@ -144,10 +144,10 @@ const DisplayTeacherHomework = ({ navigation }) => {
 export default DisplayTeacherHomework;
 
 const styles = StyleSheet.create({
-    background: {
+    dthbackground: {
         flex: 1,
     },
-    fixedHeader: {
+    dthfixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -161,26 +161,26 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    headerContainer: {
+    dthheaderContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    backButton: {
+    dthbackButton: {
         fontSize: 18,
         color: 'black',
     },
-    afterHeaderImage: {
+    dthafterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    scrollContainer: {
+    dthscrollContainer: {
         paddingTop: 170,
         paddingBottom: 30,
     },
-    title: {
+    dthtitle: {
         fontSize: 30,
         fontWeight: 'bold',
         marginVertical: 10,
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         fontStyle:'Poppins-bold'
     },
-    card: {
+    dthcard: {
         borderRadius: 10,
         padding: 20,
         marginBottom: 20,
@@ -205,16 +205,16 @@ const styles = StyleSheet.create({
         marginRight: 20,
         position: 'relative', 
     },
-    cardContent: {
+    dthcardContent: {
         flex: 1,
     },
-    cardTitle: {
+    dthcardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
         color: '#304F62',
     },
-    cardButton: {
+    dthcardButton: {
         backgroundColor: '#304F62',
         paddingVertical: 5,  
         paddingHorizontal: 10, 
@@ -228,19 +228,19 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         flexDirection: 'row', 
     },
-    buttonText: {
+    dthbuttonText: {
         color: '#fff', 
         fontSize: 14, 
     },
-    icons: {
+    dthicons: {
         flexDirection: 'row',
     },
-    iconButton: {
+    dthiconButton: {
         marginLeft: 10,
         marginBottom: 5,
         marginTop: -30,
     },
-    cardBottomImage: {
+    dthcardBottomImage: {
         width: 180,  
         height: 180, 
         position: 'absolute',
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', 
         bottom: -30,
     },
-    pinkBird: {
+    dthpinkBird: {
         position: 'absolute',
         bottom: 0,  
         right: 0,   

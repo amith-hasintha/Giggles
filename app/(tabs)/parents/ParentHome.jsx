@@ -6,39 +6,39 @@ const ParentHome = ({ navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/background.png')}
-            style={styles.background}
+            style={styles.phbackground}
             resizeMode="cover"
         >
-            <View style={styles.fixedHeader}>
-                <View style={styles.headerContainer}>
+            <View style={styles.phfixedHeader}>
+                <View style={styles.phheaderContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate('ParentHomePage')}>
-                        <Text style={styles.backButton}><Feather name="arrow-left-circle" size={24} color="black" /></Text>
+                        <Text style={styles.phbackButton}><Feather name="arrow-left-circle" size={24} color="black" /></Text>
                     </TouchableOpacity>
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.afterHeaderImage}
+                    style={styles.phafterHeaderImage}
                 />
             </View>
 
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <Text style={styles.pageTitle}>Enjoy Your HomeWork...</Text>
+                <Text style={styles.phpageTitle}>Enjoy Your HomeWork...</Text>
                 
                 <Image
                     source={require('../../assets/parenthome.png')}
-                    style={styles.parentImage}
+                    style={styles.phparentImage}
                 />
                 
                 <TouchableOpacity 
-                    style={styles.button} 
+                    style={styles.phbutton} 
                     onPress={() => navigation.navigate('DisplayParentHomework')} // Ensure this matches the registered name
                 >
-                    <Text style={styles.buttonText}>Start</Text>
+                    <Text style={styles.phbuttonText}>Start</Text>
                 </TouchableOpacity>
 
                 <Image
                     source={require('../../assets/homebird.png')}
-                    style={styles.birdImage}
+                    style={styles.phbirdImage}
                 />
             </ScrollView>
         </ImageBackground>
@@ -46,10 +46,10 @@ const ParentHome = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-    background: {
+    phbackground: {
         flex: 1,
     },
-    fixedHeader: {
+    phfixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -63,26 +63,26 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    headerContainer: {
+    phheaderContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    backButton: {
+    phbackButton: {
         fontSize: 18,
         color: 'black',
     },
-    afterHeaderImage: {
+    phafterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    scrollContainer: {
+    phscrollContainer: {
         paddingTop: 170,
         paddingBottom: 30,
     },
-    pageTitle: {
+    phpageTitle: {
         fontSize: 35,
         fontWeight: 'bold',
         marginVertical: 10,
@@ -91,13 +91,13 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         fontFamily:'Unkempt'
     },
-    parentImage: {
+    phparentImage: {
         width: 250, 
         height: 250, 
         marginTop: 10, 
         alignSelf: 'center', 
     },
-    button: {
+    phbutton: {
         backgroundColor: '#6B9AB6', 
         padding: 15,
         borderRadius: 5,
@@ -105,13 +105,13 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: '60%', 
     },
-    buttonText: {
+    phbuttonText: {
         color: 'black',
         textAlign: 'center',
         fontSize: 25,
         fontWeight: 'bold'
     },
-    birdImage: {
+    phbirdImage: {
         width: 70,
         height: 70,
         marginLeft: 280,

@@ -8,10 +8,10 @@ const Homepg1 = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={handlePress}>
-      <View style={styles.container}>
+      <View style={styles.hcontainer}>
         <ImageBackground
           source={require('../assets/home1.png')}
-          style={styles.backgroundImage}
+          style={styles.hbackgroundImage}
           resizeMode="cover"
         >
         </ImageBackground>
@@ -21,10 +21,10 @@ const Homepg1 = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  hcontainer: {
     flex: 1,
   },
-  backgroundImage: {
+  hbackgroundImage: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

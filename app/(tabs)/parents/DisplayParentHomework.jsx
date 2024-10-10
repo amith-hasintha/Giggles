@@ -62,13 +62,13 @@ const DisplayParentHomework = ({ navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/transparentpic.png')}
-            style={styles.background}
+            style={styles.dphbackground}
             resizeMode="cover"
         >
-            <View style={styles.fixedHeader}>
-            <View style={styles.headerContainer}>
+            <View style={styles.dphfixedHeader}>
+            <View style={styles.dphheaderContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('ParentHome')}>
-                        <Text style={styles.backButton}>
+                        <Text style={styles.dphbackButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -78,11 +78,11 @@ const DisplayParentHomework = ({ navigation }) => {
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.afterHeaderImage}
+                    style={styles.dphafterHeaderImage}
                 />
             </View>
 
-            <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <ScrollView contentContainerStyle={styles.dphscrollContainer}>
                 <Text style={styles.title}>Home Works</Text>
                 {activities.map(activity => (
                     <ImageBackground 
@@ -91,26 +91,26 @@ const DisplayParentHomework = ({ navigation }) => {
                         style={styles.card}
                         imageStyle={{ borderRadius: 10 }} 
                     >
-                        <View style={styles.cardContent}>
-                            <Text style={styles.cardTitle}>{activity.title}</Text>
+                        <View style={styles.dphcardContent}>
+                            <Text style={styles.dphcardTitle}>{activity.title}</Text>
                             <TouchableOpacity 
-                                style={styles.cardButton} 
+                                style={styles.dphcardButton} 
                                 onPress={() => navigation.navigate('WorkSheet', { activityId: activity._id })} // Navigate to the worksheet
                             >
-                                <Text style={styles.buttonText}>Start</Text> 
+                                <Text style={styles.dphbuttonText}>Start</Text> 
                             </TouchableOpacity>
                             
                             {/* Display the worksheet URL if available */}
                             {activity.worksheet && activity.worksheet.url && (
                                 <TouchableOpacity onPress={() => openWorksheetURL(activity.worksheet.url)}>
-                                    <Text style={styles.link}>Open Worksheet URL</Text>
+                                    <Text style={styles.dphlink}>Open Worksheet URL</Text>
                                 </TouchableOpacity>
                             )}
                         </View>
 
                         <Image 
                             source={require('../../assets/homecard.png')} 
-                            style={styles.cardBottomImage} 
+                            style={styles.dphcardBottomImage} 
                         />
                     </ImageBackground>
                 ))}
@@ -118,7 +118,7 @@ const DisplayParentHomework = ({ navigation }) => {
 
             <Image 
                 source={require('../../assets/pinkbird.png')} 
-                style={styles.pinkBird}
+                style={styles.dphpinkBird}
             />
         </ImageBackground>
     );
@@ -127,11 +127,11 @@ const DisplayParentHomework = ({ navigation }) => {
 export default DisplayParentHomework;
 
 const styles = StyleSheet.create({
-    background: {
+    dphbackground: {
         flex: 1,
         backgroundColor: '#96CBE9',
     },
-    fixedHeader: {
+    dphfixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -145,26 +145,26 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    headerContainer: {
+    dphheaderContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    backButton: {
+    dphbackButton: {
         fontSize: 18,
         color: 'black',
     },
-    afterHeaderImage: {
+    dphafterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    scrollContainer: {
+    dphscrollContainer: {
         paddingTop: 170,
         paddingBottom: 30,
     },
-    title: {
+    dphtitle: {
         fontSize: 30,
         fontWeight: 'bold',
         marginVertical: 10,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
         color: '#333',
         marginBottom: 30,
     },
-    card: {
+    dphcard: {
         borderRadius: 10,
         padding: 20,
         marginBottom: 20,
@@ -188,16 +188,16 @@ const styles = StyleSheet.create({
         marginRight: 20,
         position: 'relative', 
     },
-    cardContent: {
+    dphcardContent: {
         flex: 1,
     },
-    cardTitle: {
+    dphcardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
         color: '#304F62',
     },
-    cardButton: {
+    dphcardButton: {
         backgroundColor: '#304F62',
         paddingVertical: 5,  
         paddingHorizontal: 10, 
@@ -211,11 +211,11 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         flexDirection: 'row', 
     },
-    buttonText: {
+    dphbuttonText: {
         color: '#fff', 
         fontSize: 14, 
     },
-    cardBottomImage: {
+    dphcardBottomImage: {
         width: 280,  
         height: 280, 
         position: 'absolute',
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', 
         bottom: -30,
     },
-    pinkBird: {
+    dphpinkBird: {
         position: 'absolute',
         bottom: 0,  
         right: 0,   
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', 
         opacity: 0.6,
     },
-    link: {
+    dphlink: {
         marginTop: 10,
         fontSize: 16,
         color: 'blue',

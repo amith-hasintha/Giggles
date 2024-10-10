@@ -46,40 +46,40 @@ const Feedbacks = ({ navigation }) => {
   return (
     <ImageBackground
       source={require('../../assets/teacherbackground.png')}
-      style={styles.background}
+      style={styles.fbackground}
       resizeMode="cover"
     >
-      <View style={styles.fixedHeader}>
-        <View style={styles.headerContainer}>
+      <View style={styles.ffixedHeader}>
+        <View style={styles.fheaderContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
-            <Text style={styles.backButton}>
+            <Text style={styles.fbackButton}>
               <Feather name="arrow-left-circle" size={24} color="black" />
             </Text>
           </TouchableOpacity>
         </View>
         <Image
           source={require('../../assets/logo.png')}
-          style={styles.afterHeaderImage}
+          style={styles.fafterHeaderImage}
         />
       </View>
-      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-        <Text style={styles.title}>Feedbacks</Text>
+      <ScrollView contentContainerStyle={styles.fscrollContainer} showsVerticalScrollIndicator={false}>
+        <Text style={styles.ftitle}>Feedbacks</Text>
         <FlatList
           data={feedbacks}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.feedbackItem}>
-              <Text style={styles.feedbackText}>Rating: {item.rating}</Text>
-              <Text style={styles.feedbackText}>Feedback: {item.feedback}</Text>
+            <View style={styles.ffeedbackItem}>
+              <Text style={styles.ffeedbackText}>Rating: {item.rating}</Text>
+              <Text style={styles.ffeedbackText}>Feedback: {item.feedback}</Text>
               <TouchableOpacity onPress={() => deleteFeedback(item.id)}>
-                <Text style={styles.deleteText}>Delete</Text>
+                <Text style={styles.fdeleteText}>Delete</Text>
               </TouchableOpacity>
             </View>
           )}
         />
         <Image
           source={require('../../assets/pinkbird.png')}
-          style={styles.birdImage}
+          style={styles.fbirdImage}
         />
       </ScrollView>
     </ImageBackground>
@@ -87,12 +87,12 @@ const Feedbacks = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  background: 
+  fbackground: 
   { 
     flex: 1, 
     justifyContent: 'center' 
   },
-  fixedHeader: 
+  ffixedHeader: 
   { 
     position: 'absolute', 
     top: 0, 
@@ -102,25 +102,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', 
     height: 49 
   },
-  headerContainer: 
+  fheaderContainer: 
   { 
     padding: 13, 
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center' 
   },
-  backButton: 
+  fbackButton: 
   { 
     fontSize: 18, 
     color: 'black' 
   },
-  afterHeaderImage: 
+  fafterHeaderImage: 
   { 
     width: '100%', 
     height: 110, 
     resizeMode: 'cover' 
   },
-  scrollContainer: 
+  fscrollContainer: 
   { 
     paddingTop: 60, 
     paddingBottom: 150, 
@@ -131,14 +131,14 @@ const styles = StyleSheet.create({
     elevation: 4, 
     marginTop: 200 
   },
-  title: 
+  ftitle: 
   { 
     fontSize: 24, 
     fontWeight: 'bold', 
     marginBottom: 20, 
     textAlign: 'center' 
   },
-  feedbackItem: 
+  ffeedbackItem: 
   { 
     padding: 10, 
     marginBottom: 10, 
@@ -149,25 +149,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1, 
     shadowRadius: 3, 
     elevation: 3, 
-    width: '90%' },
-  feedbackText: 
+    width: '90%' 
+  },
+  ffeedbackText: 
   { 
     fontSize: 16, 
     color: '#333' 
   },
-  deleteText: 
+  fdeleteText: 
   { 
     color: 'red', 
     fontSize: 14, 
     marginTop: 5 
   },
-  errorText: 
+  ferrorText: 
   { 
     color: 'red', 
     textAlign: 'center', 
     marginTop: 10 
   },
-  birdImage: 
+  fbirdImage: 
   { 
     width: 110, 
     height: 110, 

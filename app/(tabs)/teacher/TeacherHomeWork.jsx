@@ -107,12 +107,12 @@ const TeacherHomeWork = ({ navigation }) => {
     return (
         <ImageBackground 
             source={require('../../assets/teacherbackground.png')}
-            style={styles.backgroundImage}
+            style={styles.thwbackgroundImage}
         >
-            <View style={styles.fixedHeader}>
-            <View style={styles.headerContainer}>
+            <View style={styles.thwfixedHeader}>
+            <View style={styles.thwheaderContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
-                        <Text style={styles.backButton}>
+                        <Text style={styles.thwbackButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -122,70 +122,70 @@ const TeacherHomeWork = ({ navigation }) => {
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.afterHeaderImage}
+                    style={styles.thwafterHeaderImage}
                 />
             </View>
 
             <View style={styles.overlay}> 
                 <ScrollView 
-                    contentContainerStyle={styles.scrollContainer} 
+                    contentContainerStyle={styles.thwscrollContainer} 
                     showsVerticalScrollIndicator={false} 
                     keyboardShouldPersistTaps="handled"
                 >
-                    <Text style={styles.title}>Add New Homework</Text>
+                    <Text style={styles.thwtitle}>Add New Homework</Text>
 
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.label}>Title</Text>
+                    <View style={styles.thwinputContainer}>
+                        <Text style={styles.thwlabel}>Title</Text>
                         <TextInput
                             placeholder="Enter title"
                             value={title}
                             onChangeText={setTitle}
-                            style={styles.input}
+                            style={styles.thwinput}
                             placeholderTextColor="#999"
                         />
                     </View>
 
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.label}>Description</Text>
+                    <View style={styles.thwinputContainer}>
+                        <Text style={styles.thwlabel}>Description</Text>
                         <TextInput
                             placeholder="Enter description"
                             value={description}
                             onChangeText={setDescription}
-                            style={[styles.input, styles.descriptionInput]}
+                            style={[styles.thwinput, styles.thwdescriptionInput]}
                             multiline
                             numberOfLines={4}
                             placeholderTextColor="#999"
                         />
                     </View>
                     
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.label}>Worksheet Title</Text>
+                    <View style={styles.thwinputContainer}>
+                        <Text style={styles.thwlabel}>Worksheet Title</Text>
                         <TextInput
                             placeholder="Enter worksheet title"
                             value={worksheetTitle}
                             onChangeText={setWorksheetTitle}
-                            style={styles.input}
+                            style={styles.thwinput}
                             placeholderTextColor="#999"
                         />
                     </View>
 
-                    <View style={styles.inputContainer}>
-                        <Text style={styles.label}>Upload Worksheet</Text>
-                        <View style={styles.worksheetInputContainer}>
+                    <View style={styles.thwinputContainer}>
+                        <Text style={styles.thwlabel}>Upload Worksheet</Text>
+                        <View style={styles.thwworksheetInputContainer}>
                             <TextInput
                                 placeholder="Upload Worksheet"
                                 value={worksheet}
                                 onChangeText={setWorksheet}
-                                style={[styles.input, styles.worksheetInput]}
+                                style={[styles.input, styles.thwworksheetInput]}
                                 placeholderTextColor="#999"
                                 editable={false} // Make it non-editable
                             />
-                            <Feather name="upload" size={24} color="black" style={styles.uploadIcon} onPress={handlePickDocument} />
+                            <Feather name="upload" size={24} color="black" style={styles.thwuploadIcon} onPress={handlePickDocument} />
                         </View>
                     </View>
 
-                    <TouchableOpacity onPress={handleAddHomework} style={styles.addButton}>
-                        <Text style={styles.addButtonText}>Add Homework</Text>
+                    <TouchableOpacity onPress={handleAddHomework} style={styles.thwaddButton}>
+                        <Text style={styles.thwaddButtonText}>Add Homework</Text>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
@@ -194,17 +194,17 @@ const TeacherHomeWork = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    backgroundImage: {
+    thwbackgroundImage: {
         flex: 1,
     },
-    overlay: {
+    thwoverlay: {
         flex: 1,
         justifyContent: 'flex-start',
     },
-    scrollContainer: {
+    thwscrollContainer: {
         paddingBottom: 20,
     },
-    fixedHeader: {
+    thwfixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -218,18 +218,18 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    headerContainer: {
+    thwheaderContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    afterHeaderImage: {
+    thwafterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    title: {
+    thwtitle: {
         marginTop:200,
         fontSize: 28,
         fontWeight: 'bold',
@@ -238,17 +238,17 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontFamily:'Poppins-bold'
     },
-    inputContainer: {
+    thwinputContainer: {
         marginBottom: 15,
     },
-    label: {
+    thwlabel: {
         color: 'black',
         marginBottom: 5,
         fontSize: 16,
         marginLeft: 15,
         marginRight: 15,
     },
-    input: {
+    thwinput: {
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 8,
@@ -259,25 +259,25 @@ const styles = StyleSheet.create({
         marginLeft: 15,
         marginRight: 15,
     },
-    worksheetInputContainer: {
+    thwworksheetInputContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         marginLeft: 15,
         marginRight: 15,
     },
-    uploadIcon: {
+    thwuploadIcon: {
         position: 'absolute',
         right: 30,
     },
-    worksheetInput: {
+    thwworksheetInput: {
         paddingRight: 40,
         flex: 1,
     },
-    descriptionInput: {
+    thwdescriptionInput: {
         height: 100,
         textAlignVertical: 'top',
     },
-    addButton: {
+    thwaddButton: {
         backgroundColor: '#0C5481',
         paddingVertical: 15,
         borderRadius: 8,
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 95,
         marginTop: 20,
     },
-    addButtonText: {
+    thwaddButtonText: {
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',

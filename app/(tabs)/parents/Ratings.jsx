@@ -34,14 +34,14 @@ const Ratings = () => {
   return (
     <ImageBackground
       source={require('../../assets/transparentpic.png')}
-      style={styles.background}
+      style={styles.rbackground}
       resizeMode="cover"
     >
-      <View style={styles.container}>
-        <View style={styles.fixedHeader}>
-        <View style={styles.headerContainer}>
+      <View style={styles.rcontainer}>
+        <View style={styles.rfixedHeader}>
+        <View style={styles.rheaderContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('DisplayParentHomework')}>
-                        <Text style={styles.backButton}>
+                        <Text style={styles.rbackButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -51,19 +51,19 @@ const Ratings = () => {
                 </View>
           <Image
             source={require('../../assets/logo.png')}
-            style={styles.afterHeaderImage}
+            style={styles.rafterHeaderImage}
           />
         </View>
 
         <ScrollView
-          contentContainerStyle={styles.scrollContainer}
+          contentContainerStyle={styles.rscrollContainer}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.ratingsContainer}>
-            <Text style={styles.ratingsTitle}>Rate Your Experience:</Text>
-            <View style={styles.sliderContainer}>
+          <View style={styles.rratingsContainer}>
+            <Text style={styles.rratingsTitle}>Rate Your Experience:</Text>
+            <View style={styles.rsliderContainer}>
               <Slider
-                style={styles.slider}
+                style={styles.rslider}
                 minimumValue={0}
                 maximumValue={5}
                 step={0.5}
@@ -73,17 +73,17 @@ const Ratings = () => {
                 maximumTrackTintColor="#ccc"
                 thumbTintColor="#FFD700"
               />
-              <Text style={styles.sliderValue}>{rating.toFixed(1)} / 5</Text>
+              <Text style={styles.rsliderValue}>{rating.toFixed(1)} / 5</Text>
             </View>
           </View>
 
-          <View style={styles.feedbackContainer}>
-            <Text style={styles.feedbackTitle}>Additional Feedback:</Text>
-            <Text style={styles.feedbackText}>
+          <View style={styles.rfeedbackContainer}>
+            <Text style={styles.rfeedbackTitle}>Additional Feedback:</Text>
+            <Text style={styles.rfeedbackText}>
               Your feedback is valuable to us. Please share your thoughts about our service.
             </Text>
             <TextInput
-              style={styles.feedbackInput}
+              style={styles.rfeedbackInput}
               placeholder="Type your feedback here..."
               multiline
               numberOfLines={4}
@@ -93,12 +93,12 @@ const Ratings = () => {
             />
           </View>
 
-          <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-            <Text style={styles.submitButtonText}>Submit</Text>
+          <TouchableOpacity style={styles.rsubmitButton} onPress={handleSubmit}>
+            <Text style={styles.rsubmitButtonText}>Submit</Text>
           </TouchableOpacity>
           <Image
           source={require('../../assets/pinkbird.png')}
-          style={styles.birdImage}
+          style={styles.rbirdImage}
         />
         </ScrollView>
       </View>
@@ -107,16 +107,16 @@ const Ratings = () => {
 };
 
 const styles = StyleSheet.create({
-  container: 
+  rcontainer: 
   { 
     flex: 1 
   },
-  background: 
+  rbackground: 
   { flex: 1, 
     justifyContent: 'center', 
     backgroundColor: '#96CBE9' 
   },
-  fixedHeader: 
+  rfixedHeader: 
   { 
     position: 'absolute', 
     top: 0, 
@@ -126,24 +126,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', 
     height: 49 
   },
-  headerContainer: 
+  rheaderContainer: 
   { 
     padding: 13, 
     flexDirection: 'row', 
     justifyContent: 'space-between', 
     alignItems: 'center' 
   },
-  backButton: 
+  rbackButton: 
   { 
     fontSize: 18, 
     color: 'black' 
   },
-  afterHeaderImage: 
+  rafterHeaderImage: 
   { width: '100%', 
     height: 110, 
     resizeMode: 'cover' 
   },
-  scrollContainer: 
+  rscrollContainer: 
   {
      paddingTop: 60, 
      paddingBottom: 150, 
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
      elevation: 4, 
      marginTop: 200 
     },
-  ratingsContainer: 
+  rratingsContainer: 
   { 
     flexDirection: 'column', 
     alignItems: 'center', 
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     elevation: 3, 
     width: '90%' 
   },
-  ratingsTitle: 
+  rratingsTitle: 
   { 
     fontSize: 24, 
     fontWeight: 'bold', 
@@ -178,23 +178,23 @@ const styles = StyleSheet.create({
     marginBottom: 10, 
     textAlign: 'center' 
   },
-  sliderContainer: 
+  rsliderContainer: 
   { 
     width: '100%', 
     alignItems: 'center' 
   },
-  slider: 
+  rslider: 
   { 
     width: '90%', 
     height: 40 
   },
-  sliderValue: 
+  rsliderValue: 
   { 
     fontSize: 18, 
     color: '#0C5481', 
     marginTop: 5 
   },
-  feedbackContainer: 
+  rfeedbackContainer: 
   { 
     marginTop: 20, 
     padding: 15, 
@@ -207,18 +207,18 @@ const styles = StyleSheet.create({
     width: '90%', 
     marginBottom: 20 
   },
-  feedbackTitle: 
+  rfeedbackTitle: 
   { 
     fontSize: 18, 
     fontWeight: 'bold', 
     marginBottom: 5 
   },
-  feedbackText: 
+  rfeedbackText: 
   { 
     fontSize: 16, 
     color: '#555' 
   },
-  feedbackInput: 
+  rfeedbackInput: 
   { 
     borderColor: '#ccc', 
     borderWidth: 1, 
@@ -231,7 +231,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 }, 
     shadowOpacity: 0.2, shadowRadius: 1 
   },
-  submitButton: 
+  rsubmitButton: 
   { 
     marginTop: 20, 
     backgroundColor: '#0C5481', 
@@ -241,13 +241,13 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     elevation: 3 
   },
-  submitButtonText: 
+  rsubmitButtonText: 
   { 
     color: '#fff', 
     fontSize: 18, 
     fontWeight: 'bold' 
   },
-  birdImage: 
+  rbirdImage: 
   { 
     width: 110, 
     height: 110, 

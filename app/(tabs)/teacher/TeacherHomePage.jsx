@@ -6,11 +6,11 @@ const TeacherHomePage = ({ navigation }) => {
   return (
     <ImageBackground
       source={require('../../assets/teacherhomepg.png')} // Change this to your background image
-      style={styles.container}
+      style={styles.thpcontainer}
       resizeMode="cover"
     >
-      <View style={styles.fixedHeader}>
-        <View style={styles.headerContainer}>
+      <View style={styles.thpfixedHeader}>
+        <View style={styles.thpheaderContainer}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Feather name="arrow-left-circle" size={24} color="black" />
           </TouchableOpacity>
@@ -20,21 +20,21 @@ const TeacherHomePage = ({ navigation }) => {
         </View>
         <Image
           source={require('../../assets/logo.png')}
-          style={styles.afterHeaderImage}
+          style={styles.thpafterHeaderImage}
         />
       </View>
 
-      <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeText}>Welcome Teacher!</Text>
+      <View style={styles.thpwelcomeContainer}>
+        <Text style={styles.thpwelcomeText}>Welcome Teacher!</Text>
       </View>
 
       <View style={styles.overlay}>
         <ScrollView
-          contentContainerStyle={styles.scrollContainer}
+          contentContainerStyle={styles.thpscrollContainer}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          <View style={styles.gridContainer}>
+          <View style={styles.thpgridContainer}>
             {[
               { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: '' },
               { title: 'Activities', image: require('../../assets/activity.png'), screen: 'TeacherHome' },
@@ -47,12 +47,12 @@ const TeacherHomePage = ({ navigation }) => {
                 onPress={() => navigation.navigate(item.screen)} // Navigate to the respective screen
               >
                 <Image source={item.image} style={styles.icon} />
-                <Text style={styles.buttonText}>{item.title}</Text>
+                <Text style={styles.thpbuttonText}>{item.title}</Text>
               </TouchableOpacity>
             ))}
           </View>
 
-          <Text style={styles.footerText}>© 2024 Giggles. All rights reserved.</Text>
+          <Text style={styles.thpfooterText}>© 2024 Giggles. All rights reserved.</Text>
         </ScrollView>
       </View>
     </ImageBackground>
@@ -60,11 +60,11 @@ const TeacherHomePage = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  thpcontainer: {
     flex: 1,
     opacity: 0.9,
   },
-  fixedHeader: {
+  thpfixedHeader: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -78,36 +78,36 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     height: 49,
   },
-  headerContainer: {
+  thpheaderContainer: {
     padding: 13,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  afterHeaderImage: {
+  thpafterHeaderImage: {
     width: '100%',
     height: 110,
     resizeMode: 'cover',
   },
-  welcomeContainer: {
+  thpwelcomeContainer: {
     marginTop: 180,
     alignItems: 'center',
     paddingBottom: 20,
   },
   
-  scrollContainer: {
+  thpscrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 20,
   },
-  welcomeText: {
+  thpwelcomeText: {
     fontSize: 30,
     fontWeight: '700',
     color: 'white',
     textAlign: 'center',
   },
-  gridContainer: {
+  thpgridContainer: {
     marginTop: 30,
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 60,
   },
-  button: {
+  thpbutton: {
     backgroundColor: '#96CBE9', // More opaque white background
     borderRadius: 10,
     margin: 10,
@@ -130,17 +130,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
-  icon: {
+  thpicon: {
     width: 70, // Adjusted for better visibility
     height: 70,
     marginBottom: 5,
   },
-  buttonText: {
+  thpbuttonText: {
     fontSize: 16,
     color: '#000',
     textAlign: 'center',
   },
-  footerText: {
+  thpfooterText: {
     position: 'absolute',
     bottom: 10,
     color: 'white',

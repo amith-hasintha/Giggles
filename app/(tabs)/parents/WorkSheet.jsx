@@ -50,14 +50,14 @@ const WorkSheet = () => {
     return (
         <ImageBackground
             source={require('../../assets/transparentpic.png')}
-            style={styles.background}
+            style={styles.wbackground}
             resizeMode="cover"
         >
-            <View style={styles.container}>
-                <View style={styles.fixedHeader}>
-                <View style={styles.headerContainer}>
+            <View style={styles.wcontainer}>
+                <View style={styles.wfixedHeader}>
+                <View style={styles.wheaderContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate('DisplayParentHomework')}>
-                        <Text style={styles.backButton}>
+                        <Text style={styles.wbackButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -67,44 +67,44 @@ const WorkSheet = () => {
                 </View>
                     <Image
                         source={require('../../assets/logo.png')}
-                        style={styles.afterHeaderImage}
+                        style={styles.wafterHeaderImage}
                     />
                 </View>
 
-                <ScrollView contentContainerStyle={styles.scrollContainer}>
-                    <View style={styles.header}>
-                        <Text style={styles.homeworkTitle}>Homework</Text>
+                <ScrollView contentContainerStyle={styles.wscrollContainer}>
+                    <View style={styles.wheader}>
+                        <Text style={styles.whomeworkTitle}>Homework</Text>
 
                         <Image
                             source={require('../../assets/homeworkpic.png')}
-                            style={styles.homeworkImage}
+                            style={styles.whomeworkImage}
                         />
                     </View>
                     <Image
                         source={require('../../assets/pinkbird.png')}
-                        style={styles.birdImage}
+                        style={styles.wbirdImage}
                     />
-                    <View style={styles.options}>
+                    <View style={styles.woptions}>
                         {activity ? (
                             <>
-                                <View style={styles.optionContainer}>
-                                    <Text style={styles.optionText}>Title: {activity.title}</Text>
+                                <View style={styles.woptionContainer}>
+                                    <Text style={styles.woptionText}>Title: {activity.title}</Text>
                                 </View>
-                                <View style={styles.optionContainer}>
-                                    <Text style={styles.optionText}>Description:</Text>
-                                    <Text style={styles.descriptionText}>{activity.description}</Text>
+                                <View style={styles.woptionContainer}>
+                                    <Text style={styles.woptionText}>Description:</Text>
+                                    <Text style={styles.wdescriptionText}>{activity.description}</Text>
                                 </View>
                             </>
                         ) : (
-                            <Text style={styles.loadingText}>Loading...</Text>
+                            <Text style={styles.wloadingText}>Loading...</Text>
                         )}
                     </View>
 
                     <TouchableOpacity
-                        style={styles.submitButton}
+                        style={styles.wsubmitButton}
                         onPress={() => navigation.navigate('Ratings')} // Navigate to Submission.js
                     >
-                        <Text style={styles.submitText}>Thank you...</Text>
+                        <Text style={styles.wsubmitText}>Thank you...</Text>
                     </TouchableOpacity>
                 </ScrollView>
 
@@ -116,15 +116,15 @@ const WorkSheet = () => {
 
 
 const styles = StyleSheet.create({
-    container: {
+    wcontainer: {
         flex: 1,
     },
-    background: {
+    wbackground: {
         flex: 1,
         justifyContent: 'center',
         backgroundColor: '#96CBE9'
     },
-    fixedHeader: {
+    wfixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -138,36 +138,36 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    headerContainer: {
+    wheaderContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    backButton: {
+    wbackButton: {
         fontSize: 18,
         color: 'black',
     },
-    afterHeaderImage: {
+    wafterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    scrollContainer: {
+    wscrollContainer: {
         paddingTop: 170, 
         paddingBottom: 30,
     },
-    header: {
+    wheader: {
         alignItems: 'center',
         marginBottom: 20,
     },
-    logo: {
+    wlogo: {
         fontSize: 28,
         color: '#ffde5c',
         fontWeight: 'bold',
         textTransform: 'uppercase',
     },
-    homeworkTitle: {
+    whomeworkTitle: {
         fontSize: 40,
         fontWeight: 'bold',
         marginVertical: 10,
@@ -176,25 +176,25 @@ const styles = StyleSheet.create({
         marginTop:30,
         fontFamily:'Unkempt'
     },
-    homeworkImage: {
+    whomeworkImage: {
         marginTop:-30,
         width: 350,  
         height: 350, 
         resizeMode: 'contain', 
         marginVertical: 10, 
     },
-    title: {
+    wtitle: {
         fontSize: 22,
         fontWeight: 'bold',
         color: '#000',
         marginBottom: 10,
     },
-    description: {
+    wdescription: {
         fontSize: 18,
         color: '#555',
         marginBottom: 10,
     },
-    options: {
+    woptions: {
         marginTop:-40,
         backgroundColor: 'rgba(255, 255, 255, 0.5)',
         paddingVertical: 15,
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginHorizontal: 20, 
     },
-    optionContainer: {
+    woptionContainer: {
         backgroundColor: 'rgba(255, 255, 255, 0.8)', 
         marginVertical: 10,
         paddingVertical: 15,
@@ -211,27 +211,27 @@ const styles = StyleSheet.create({
         marginRight:20,
         borderRadius: 15,
     },
-    optionText: {
+    woptionText: {
         fontSize: 18,
         color: '#000',
         textAlign: 'left', 
     },
-    descriptionText: {
+    wdescriptionText: {
         fontSize: 18,
         color: '#000',
         textAlign: 'center', 
     },
-    loadingText: {
+    wloadingText: {
         fontSize: 18,
         color: '#000',
         textAlign: 'center',
     },
-    optionText: {
+    woptionText: {
         fontSize: 18,
         color: '#000',
         textAlign: 'center',
     },
-    submitButton: {
+    wsubmitButton: {
         backgroundColor: 'rgba(0, 0, 0, 0.6)',
         paddingVertical: 15,
         paddingHorizontal: 20,
@@ -242,16 +242,16 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width:200
     },
-    submitText: {
+    wsubmitText: {
         fontSize: 18,
         color: '#fff',
     },
-    loadingText: {
+    wloadingText: {
         fontSize: 18,
         color: '#000',
         textAlign: 'center',
     },
-    birdImage: {
+    wbirdImage: {
         width: 110,
         height: 110,
         alignSelf: 'flex-end',

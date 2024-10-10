@@ -6,11 +6,11 @@ const ParentHomePage = ({ navigation }) => {
   return (
     <ImageBackground
       source={require('../../assets/parenthomepg.png')} // Change this to your background image
-      style={styles.container}
+      style={styles.phpcontainer}
       resizeMode="cover"
     >
-      <View style={styles.fixedHeader}>
-        <View style={styles.headerContainer}>
+      <View style={styles.phpfixedHeader}>
+        <View style={styles.phpheaderContainer}>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Feather name="arrow-left-circle" size={24} color="black" />
           </TouchableOpacity>
@@ -20,17 +20,17 @@ const ParentHomePage = ({ navigation }) => {
         </View>
         <Image
           source={require('../../assets/logo.png')}
-          style={styles.afterHeaderImage}
+          style={styles.phpafterHeaderImage}
         />
       </View>
 
-      <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeText}>Welcome Teacher!</Text>
+      <View style={styles.phpwelcomeContainer}>
+        <Text style={styles.phpwelcomeText}>Welcome Teacher!</Text>
       </View>
 
       <View style={styles.overlay}>
         <ScrollView
-          contentContainerStyle={styles.scrollContainer}
+          contentContainerStyle={styles.phpscrollContainer}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
@@ -47,12 +47,12 @@ const ParentHomePage = ({ navigation }) => {
                 onPress={() => navigation.navigate(item.screen)} // Navigate to the respective screen
               >
                 <Image source={item.image} style={styles.icon} />
-                <Text style={styles.buttonText}>{item.title}</Text>
+                <Text style={styles.phpbuttonText}>{item.title}</Text>
               </TouchableOpacity>
             ))}
           </View>
 
-          <Text style={styles.footerText}>© 2024 Giggles. All rights reserved.</Text>
+          <Text style={styles.phpfooterText}>© 2024 Giggles. All rights reserved.</Text>
         </ScrollView>
       </View>
     </ImageBackground>
@@ -60,11 +60,11 @@ const ParentHomePage = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  phpcontainer: {
     flex: 1,
     opacity: 0.9,
   },
-  fixedHeader: {
+  phpfixedHeader: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -78,36 +78,36 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     height: 49,
   },
-  headerContainer: {
+  phpheaderContainer: {
     padding: 13,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  afterHeaderImage: {
+  phpafterHeaderImage: {
     width: '100%',
     height: 110,
     resizeMode: 'cover',
   },
-  welcomeContainer: {
+  phpwelcomeContainer: {
     marginTop: 180,
     alignItems: 'center',
     paddingBottom: 20,
   },
   
-  scrollContainer: {
+  phpscrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 20,
   },
-  welcomeText: {
+  phpwelcomeText: {
     fontSize: 30,
     fontWeight: '700',
     color: 'white',
     textAlign: 'center',
   },
-  gridContainer: {
+  phpgridContainer: {
     marginTop: 30,
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 60,
   },
-  button: {
+  phpbutton: {
     backgroundColor: '#96CBE9', // More opaque white background
     borderRadius: 10,
     margin: 10,
@@ -130,17 +130,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
-  icon: {
+  phpicon: {
     width: 70, // Adjusted for better visibility
     height: 70,
     marginBottom: 5,
   },
-  buttonText: {
+  phpbuttonText: {
     fontSize: 16,
     color: '#000',
     textAlign: 'center',
   },
-  footerText: {
+  phpfooterText: {
     position: 'absolute',
     bottom: 10,
     color: 'white',

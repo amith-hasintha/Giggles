@@ -7,14 +7,14 @@ const Homepg2 = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.hocontainer}>
       <ImageBackground
         source={require('../assets/home2.png')}
-        style={styles.backgroundImage}
+        style={styles.hobackgroundImage}
         resizeMode="cover"
       >
-        <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-          <Text style={styles.buttonText}>Click Me</Text>
+        <TouchableOpacity style={styles.hobutton} onPress={handleButtonPress}>
+          <Text style={styles.hobuttonText}>Click Me</Text>
         </TouchableOpacity>
       </ImageBackground>
     </View>
@@ -22,17 +22,17 @@ const Homepg2 = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  hocontainer: {
     flex: 1,
   },
-  backgroundImage: {
+  hobackgroundImage: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
   },
-  button: {
+  hobutton: {
     position: 'absolute',
     bottom: 20, // Distance from the bottom
     right: 20,  // Distance from the right
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 25,
   },
-  buttonText: {
+  hobuttonText: {
     color: 'black',
     fontSize: 16,
     fontWeight: 'bold',

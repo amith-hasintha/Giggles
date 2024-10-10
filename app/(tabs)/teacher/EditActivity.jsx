@@ -75,13 +75,13 @@ const EditActivity = ({ route, navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/teacherbackground.png')}
-            style={styles.background}
+            style={styles.eabackground}
             resizeMode="cover"
         >
-            <View style={styles.fixedHeader}>
-            <View style={styles.headerContainer}>
+            <View style={styles.eafixedHeader}>
+            <View style={styles.eaheaderContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('DisplayTeacherHomework')}>
-                        <Text style={styles.backButton}>
+                        <Text style={styles.eabackButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -91,27 +91,27 @@ const EditActivity = ({ route, navigation }) => {
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.afterHeaderImage}
+                    style={styles.eaafterHeaderImage}
                 />
             </View>
 
-            <KeyboardAvoidingView style={styles.flexContainer} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+            <KeyboardAvoidingView style={styles.eaflexContainer} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <ScrollView 
-                    contentContainerStyle={styles.scrollContainer} 
+                    contentContainerStyle={styles.eascrollContainer} 
                     showsVerticalScrollIndicator={false} // Hides the vertical scroll indicator
                     keyboardShouldPersistTaps="handled" // Ensures taps on buttons work even with the keyboard open
                 >
-                    <View style={styles.container}>
-                        <Text style={styles.header}>Edit Activity</Text>
+                    <View style={styles.eacontainer}>
+                        <Text style={styles.eaheader}>Edit Activity</Text>
                         <TextInput
-                            style={styles.input}
+                            style={styles.eainput}
                             placeholder="Title"
                             value={activity.title}
                             onChangeText={text => setActivity({ ...activity, title: text })}
                             placeholderTextColor="#888"
                         />
                         <TextInput
-                            style={styles.input}
+                            style={styles.eainput}
                             placeholder="Description"
                             value={activity.description}
                             onChangeText={text => setActivity({ ...activity, description: text })}
@@ -131,8 +131,8 @@ const EditActivity = ({ route, navigation }) => {
                             onChangeText={text => setActivity({ ...activity, worksheet: text })}
                             placeholderTextColor="#888"
                         /> */}
-                        <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
-                            <Text style={styles.buttonText}>Update Activity</Text>
+                        <TouchableOpacity style={styles.eaupdateButton} onPress={handleUpdate}>
+                            <Text style={styles.eabuttonText}>Update Activity</Text>
                         </TouchableOpacity>
 
                         {/* Modal for success message */}
@@ -142,11 +142,11 @@ const EditActivity = ({ route, navigation }) => {
                             visible={isModalVisible}
                             onRequestClose={() => setModalVisible(false)}
                         >
-                            <View style={styles.modalContainer}>
-                                <View style={styles.modalContent}>
-                                    <Text style={styles.modalMessage}>Activity updated successfully!</Text>
-                                    <TouchableOpacity style={styles.modalButton} onPress={() => setModalVisible(false)}>
-                                        <Text style={styles.buttonText}>Close</Text>
+                            <View style={styles.eamodalContainer}>
+                                <View style={styles.eamodalContent}>
+                                    <Text style={styles.eamodalMessage}>Activity updated successfully!</Text>
+                                    <TouchableOpacity style={styles.eamodalButton} onPress={() => setModalVisible(false)}>
+                                        <Text style={styles.eabuttonText}>Close</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -158,17 +158,17 @@ const EditActivity = ({ route, navigation }) => {
             {/* Add the greenbird image at the bottom right corner */}
             <Image
                 source={require('../../assets/greenbird.png')}
-                style={styles.greenbird}
+                style={styles.eagreenbird}
             />
         </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
-    background: {
+    eabackground: {
         flex: 1,
     },
-    fixedHeader: {
+    eafixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -182,31 +182,31 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    headerContainer: {
+    eaheaderContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    backButton: {
+    eabackButton: {
         fontSize: 18,
         color: 'black',
     },
-    afterHeaderImage: {
+    eaafterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    scrollContainer: {
+    eascrollContainer: {
         paddingTop: 170,
         paddingBottom: 30,
     },
-    container: {
+    eacontainer: {
         flex: 1,
         padding: 20,
         backgroundColor: 'transparent'
     },
-    header: {
+    eaheader: {
         fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 40,
@@ -214,7 +214,7 @@ const styles = StyleSheet.create({
         color: 'black', 
         fontFamily:'Poppins-bold'
     },
-    input: {
+    eainput: {
         height: 50,
         borderColor: '#304F62', 
         borderWidth: 1,
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff', 
         fontSize: 16,
     },
-    updateButton: {
+    eaupdateButton: {
         backgroundColor: '#0C5481',
         paddingVertical: 15,
         borderRadius: 8,
@@ -235,18 +235,18 @@ const styles = StyleSheet.create({
         marginLeft: 75,
         marginRight: 75
     },
-    buttonText: {
+    eabuttonText: {
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
     },
-    modalContainer: {
+    eamodalContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
-    modalContent: {
+    eamodalContent: {
         width: 300,
         padding: 20,
         backgroundColor: 'white',
@@ -257,18 +257,18 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5,
     },
-    modalMessage: {
+    eamodalMessage: {
         marginBottom: 20,
         fontSize: 18,
         textAlign: 'center',
     },
-    modalButton: {
+    eamodalButton: {
         backgroundColor: '#0C5481',
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
     },
-    greenbird: {
+    eagreenbird: {
         position: 'absolute',
         bottom: 10,
         right: 10,

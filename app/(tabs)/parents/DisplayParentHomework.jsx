@@ -66,13 +66,13 @@ const DisplayParentHomework = ({ navigation }) => {
             resizeMode="cover"
         >
             <View style={styles.fixedHeader}>
-                <View style={styles.headerContainer}>
+            <View style={styles.headerContainer}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => console.log('Menu pressed')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('ParentHomePage')}>
                         <Ionicons name="menu" size={24} color="black" />
                     </TouchableOpacity>
                 </View>

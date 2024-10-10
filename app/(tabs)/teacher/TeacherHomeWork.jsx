@@ -110,11 +110,13 @@ const TeacherHomeWork = ({ navigation }) => {
             style={styles.backgroundImage}
         >
             <View style={styles.fixedHeader}>
-                <View style={styles.headerContainer}>
+            <View style={styles.headerContainer}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
-                        <Feather name="arrow-left-circle" size={24} color="black" />
+                        <Text style={styles.backButton}>
+                            <Feather name="arrow-left-circle" size={24} color="black" />
+                        </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => console.log('Menu pressed')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('TeacherHomePage')}>
                         <Ionicons name="menu" size={24} color="black" />
                     </TouchableOpacity>
                 </View>

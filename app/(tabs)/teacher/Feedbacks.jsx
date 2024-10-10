@@ -87,18 +87,93 @@ const Feedbacks = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  background: { flex: 1, justifyContent: 'center' },
-  fixedHeader: { position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1, backgroundColor: '#fff', height: 49 },
-  headerContainer: { padding: 13, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  backButton: { fontSize: 18, color: 'black' },
-  afterHeaderImage: { width: '100%', height: 110, resizeMode: 'cover' },
-  scrollContainer: { paddingTop: 60, paddingBottom: 150, alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)', borderRadius: 15, marginHorizontal: 20, elevation: 4, marginTop: 200 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, textAlign: 'center' },
-  feedbackItem: { padding: 10, marginBottom: 10, backgroundColor: '#f9f9f9', borderRadius: 5, shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.1, shadowRadius: 3, elevation: 3, width: '90%' },
-  feedbackText: { fontSize: 16, color: '#333' },
-  deleteText: { color: 'red', fontSize: 14, marginTop: 5 },
-  errorText: { color: 'red', textAlign: 'center', marginTop: 10 },
-  birdImage: { width: 110, height: 110, alignSelf: 'flex-end', marginTop: 9 },
+  background: 
+  { 
+    flex: 1, 
+    justifyContent: 'center' 
+  },
+  fixedHeader: 
+  { 
+    position: 'absolute', 
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    zIndex: 1, 
+    backgroundColor: '#fff', 
+    height: 49 
+  },
+  headerContainer: 
+  { 
+    padding: 13, 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    alignItems: 'center' 
+  },
+  backButton: 
+  { 
+    fontSize: 18, 
+    color: 'black' 
+  },
+  afterHeaderImage: 
+  { 
+    width: '100%', 
+    height: 110, 
+    resizeMode: 'cover' 
+  },
+  scrollContainer: 
+  { 
+    paddingTop: 60, 
+    paddingBottom: 150, 
+    alignItems: 'center', 
+    backgroundColor: 'rgba(255, 255, 255, 0.9)', 
+    borderRadius: 15, 
+    marginHorizontal: 20, 
+    elevation: 4, 
+    marginTop: 200 
+  },
+  title: 
+  { 
+    fontSize: 24, 
+    fontWeight: 'bold', 
+    marginBottom: 20, 
+    textAlign: 'center' 
+  },
+  feedbackItem: 
+  { 
+    padding: 10, 
+    marginBottom: 10, 
+    backgroundColor: '#f9f9f9', 
+    borderRadius: 5, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 }, 
+    shadowOpacity: 0.1, 
+    shadowRadius: 3, 
+    elevation: 3, 
+    width: '90%' },
+  feedbackText: 
+  { 
+    fontSize: 16, 
+    color: '#333' 
+  },
+  deleteText: 
+  { 
+    color: 'red', 
+    fontSize: 14, 
+    marginTop: 5 
+  },
+  errorText: 
+  { 
+    color: 'red', 
+    textAlign: 'center', 
+    marginTop: 10 
+  },
+  birdImage: 
+  { 
+    width: 110, 
+    height: 110, 
+    alignSelf: 'flex-end', 
+    marginTop: 9 
+  },
 });
 
 export default Feedbacks;

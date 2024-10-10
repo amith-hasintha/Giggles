@@ -55,16 +55,16 @@ const WorkSheet = () => {
         >
             <View style={styles.container}>
                 <View style={styles.fixedHeader}>
-                    <View style={styles.headerContainer}>
-                        <TouchableOpacity onPress={() => navigation.goBack()}>
-                            <Text style={styles.backButton}>
-                                <Feather name="arrow-left-circle" size={24} color="black" />
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => console.log('Menu pressed')}>
-                            <Ionicons name="menu" size={24} color="black" />
-                        </TouchableOpacity>
-                    </View>
+                <View style={styles.headerContainer}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Text style={styles.backButton}>
+                            <Feather name="arrow-left-circle" size={24} color="black" />
+                        </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('ParentHomePage')}>
+                        <Ionicons name="menu" size={24} color="black" />
+                    </TouchableOpacity>
+                </View>
                     <Image
                         source={require('../../assets/logo.png')}
                         style={styles.afterHeaderImage}

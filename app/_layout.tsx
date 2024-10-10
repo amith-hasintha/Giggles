@@ -16,6 +16,11 @@ export default function RootLayout() {
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
 
+  useFonts({
+    'irish':require('./../assets/fonts/IrishGrover-Regular.ttf'),
+    'inter':require('./../assets/fonts/Inter_18pt-Italic.ttf')
+  })
+
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();

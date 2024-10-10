@@ -80,7 +80,7 @@ const EditActivity = ({ route, navigation }) => {
         >
             <View style={styles.fixedHeader}>
             <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.navigate('DisplayTeacherHomework')}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
         marginBottom: 40,
         textAlign: 'center',
         color: 'black', 
+        fontFamily:'Poppins-bold'
     },
     input: {
         height: 50,
@@ -231,8 +232,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 20,
         marginTop: 15,
-        marginLeft: 45,
-        marginRight: 45
+        marginLeft: 75,
+        marginRight: 75
     },
     buttonText: {
         color: 'white',

@@ -111,7 +111,7 @@ const TeacherHomeWork = ({ navigation }) => {
         >
             <View style={styles.fixedHeader}>
             <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
         color: 'black',
         marginBottom: 10,
         textAlign: 'center',
+        fontFamily:'Poppins-bold'
     },
     inputContainer: {
         marginBottom: 15,
@@ -281,7 +282,7 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: 'center',
-        marginHorizontal: 15,
+        marginHorizontal: 95,
         marginTop: 20,
     },
     addButtonText: {

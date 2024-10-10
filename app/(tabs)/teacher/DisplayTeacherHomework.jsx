@@ -72,7 +72,7 @@ const DisplayTeacherHomework = ({ navigation }) => {
         >
             <View style={styles.fixedHeader}>
             <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
@@ -187,6 +187,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#333',
         marginBottom: 30,
+        fontStyle:'Poppins-bold'
     },
     card: {
         borderRadius: 10,

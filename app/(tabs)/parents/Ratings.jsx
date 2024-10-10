@@ -40,7 +40,7 @@ const Ratings = () => {
       <View style={styles.container}>
         <View style={styles.fixedHeader}>
         <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.navigate('DisplayParentHomework')}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>

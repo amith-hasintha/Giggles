@@ -67,7 +67,7 @@ const DisplayParentHomework = ({ navigation }) => {
         >
             <View style={styles.fixedHeader}>
             <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.navigate('ParentHome')}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>

@@ -11,7 +11,7 @@ const TeacherHome = ({ navigation }) => {
     >
       <View style={styles.fixedHeader}>
         <View style={styles.headerContainer}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
+          <TouchableOpacity onPress={() => navigation.navigate('TeacherHomePage')}>
             <Feather name="arrow-left-circle" size={28} color="#304F62" />
           </TouchableOpacity>
         </View>
@@ -109,7 +109,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333',
     marginTop:30,
-    marginBottom:40
+    marginBottom:40,
+    fontFamily:'Poppins-bold'
   },
   cardContainer: {
     justifyContent: 'center',
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
     color: '#304F62',
     fontWeight: 'bold',
     flex: 1,
+    fontFamily:'Poppins-medium'
   },
   cardImage: {
     width: 90,

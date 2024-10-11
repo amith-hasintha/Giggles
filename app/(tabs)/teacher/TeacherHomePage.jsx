@@ -36,10 +36,10 @@ const TeacherHomePage = ({ navigation }) => {
         >
           <View style={styles.thpgridContainer}>
             {[
-              { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: '' },
+              { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: 'DisplayDailyUpdates' },
               { title: 'Activities', image: require('../../assets/activity.png'), screen: 'TeacherHome' },
               { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: '' },
-              { title: 'Payment Details', image: require('../../assets/payment.png'), screen: '' },
+              { title: 'Payment Details', image: require('../../assets/payment.png'), screen: 'DisplayPayments' },
             ].map((item, index) => (
               <TouchableOpacity 
                 key={index} 

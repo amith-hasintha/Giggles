@@ -6,37 +6,37 @@ const TeacherHome = ({ navigation }) => {
   return (
     <ImageBackground
       source={require('../../assets/teacherbackground.png')}
-      style={styles.thbackground}
+      style={styles.background}
       resizeMode="cover"
     >
-      <View style={styles.thfixedHeader}>
-        <View style={styles.thheaderContainer}>
+      <View style={styles.fixedHeader}>
+        <View style={styles.headerContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('TeacherHomePage')}>
             <Feather name="arrow-left-circle" size={28} color="#304F62" />
           </TouchableOpacity>
         </View>
         <Image
           source={require('../../assets/logo.png')}
-          style={styles.thafterHeaderImage}
+          style={styles.afterHeaderImage}
         />
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.thpageTitle}>Activities</Text>
-        <View style={styles.thcardContainer}>
+        <Text style={styles.pageTitle}>Activities</Text>
+        <View style={styles.cardContainer}>
           <TouchableOpacity
             style={styles.card}
             onPress={() => navigation.navigate('TeacherHomeWork')}
           >
             <ImageBackground
               source={require('../../assets/teachercard.jpeg')}
-              style={styles.thcardBackground}
+              style={styles.cardBackground}
             >
-              <View style={styles.thcardContent}>
-                <Text style={styles.thcardText}>Home Works</Text>
+              <View style={styles.cardContent}>
+                <Text style={styles.cardText}>Home Works</Text>
                 <Image
                   source={require('../../assets/teacherhomework.png')}
-                  style={styles.thcardImage}
+                  style={styles.cardImage}
                 />
               </View>
             </ImageBackground>
@@ -48,13 +48,13 @@ const TeacherHome = ({ navigation }) => {
           >
             <ImageBackground
               source={require('../../assets/teachercard.jpeg')}
-              style={styles.thcardBackground}
+              style={styles.cardBackground}
             >
-              <View style={styles.thcardContent}>
-                <Text style={styles.thcardText}>Ratings and Feedbacks</Text>
+              <View style={styles.cardContent}>
+                <Text style={styles.cardText}>Ratings and Feedbacks</Text>
                 <Image
                   source={require('../../assets/teacherhomework.png')}
-                  style={styles.thcardImage}
+                  style={styles.cardImage}
                 />
               </View>
             </ImageBackground>
@@ -62,7 +62,7 @@ const TeacherHome = ({ navigation }) => {
         </View>
         <Image
           source={require('../../assets/pinkbird.png')}
-          style={styles.thbirdImage}
+          style={styles.birdImage}
         />
       </ScrollView>
     </ImageBackground>
@@ -70,10 +70,10 @@ const TeacherHome = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  thbackground: {
+  background: {
     flex: 1,
   },
-  thfixedHeader: {
+  fixedHeader: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -87,22 +87,22 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     height: 49,
   },
-  thheaderContainer: {
+  headerContainer: {
     padding: 10,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  thafterHeaderImage: {
+  afterHeaderImage: {
     width: '100%',
     height: 110,
     resizeMode: 'cover',
   },
-  thscrollContainer: {
+  scrollContainer: {
     paddingTop: 160,
     paddingBottom: 30,
     paddingHorizontal: 20,
   },
-  thpageTitle: {
+  pageTitle: {
     fontSize: 30,
     fontWeight: 'bold',
     marginVertical: 10,
@@ -112,10 +112,10 @@ const styles = StyleSheet.create({
     marginBottom:40,
     fontFamily:'Poppins-bold'
   },
-  thcardContainer: {
+  cardContainer: {
     justifyContent: 'center',
   },
-  thcard: {
+  card: {
     width: '100%',
     borderRadius: 12,
     overflow: 'hidden',
@@ -127,30 +127,30 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     backgroundColor: '#fff',
   },
-  thcardBackground: {
+  cardBackground: {
     justifyContent: 'center',
     alignItems: 'center',
     height: 150,
   },
-  thcardContent: {
+  cardContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
     padding: 20,
   },
-  thcardText: {
+  cardText: {
     fontSize: 22,
     color: '#304F62',
     fontWeight: 'bold',
     flex: 1,
     fontFamily:'Poppins-medium'
   },
-  thcardImage: {
+  cardImage: {
     width: 90,
     height: 120,
   },
-  thbirdImage: {
+  birdImage: {
     width: 110,
     height: 110,
     alignSelf: 'flex-end',

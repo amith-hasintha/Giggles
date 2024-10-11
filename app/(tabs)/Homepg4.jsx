@@ -3,19 +3,19 @@ import { View, ImageBackground, StyleSheet, TouchableOpacity, Text } from 'react
 
 const Homepg4 = ({ navigation }) => {
   return (
-    <View style={styles.homecontainer}>
+    <View style={styles.container}>
       <ImageBackground
         source={require('../assets/home4.png')}
-        style={styles.homebackgroundImage}
+        style={styles.backgroundImage}
         resizeMode="cover"
       >
-        <View style={styles.homebuttonContainer}>
-          <TouchableOpacity style={styles.homebutton1} onPress={() => navigation.navigate('Homepg3')}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button1} onPress={() => navigation.navigate('Homepg3')}>
             <Text style={styles.homebuttonText}>Back</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.homebutton2} onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.homebuttonText}>Start</Text>
+          <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.buttonText}>Start</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -24,17 +24,17 @@ const Homepg4 = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  homecontainer: {
+  container: {
     flex: 1,
   },
-  homebackgroundImage: {
+  backgroundImage: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
   },
-  homebuttonContainer: {
+  buttonContainer: {
     position: 'absolute',
     bottom: 20,
     flexDirection: 'row',
@@ -42,21 +42,21 @@ const styles = StyleSheet.create({
     width: '100%',                  // Full width to position buttons on both sides
     paddingHorizontal: 20,          // Padding for spacing from the screen edges
   },
-  homebutton1: {
+  button1: {
     backgroundColor: '#FC9144',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
     width: '40%', // Width of the left button
   },
-  homebutton2: {
+  button2: {
     backgroundColor: '#26DA2D',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
     width: '40%', // Width of the right button
   },
-  homebuttonText: {
+  buttonText: {
     color: 'black',
     fontSize: 16,
     fontWeight: 'bold',

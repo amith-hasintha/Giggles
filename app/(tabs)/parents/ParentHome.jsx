@@ -6,39 +6,39 @@ const ParentHome = ({ navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/background.png')}
-            style={styles.phbackground}
+            style={styles.background}
             resizeMode="cover"
         >
             <View style={styles.phfixedHeader}>
-                <View style={styles.phheaderContainer}>
+                <View style={styles.headerContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate('ParentHomePage')}>
-                        <Text style={styles.phbackButton}><Feather name="arrow-left-circle" size={24} color="black" /></Text>
+                        <Text style={styles.backButton}><Feather name="arrow-left-circle" size={24} color="black" /></Text>
                     </TouchableOpacity>
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.phafterHeaderImage}
+                    style={styles.afterHeaderImage}
                 />
             </View>
 
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <Text style={styles.phpageTitle}>Enjoy Your HomeWork...</Text>
+                <Text style={styles.pageTitle}>Enjoy Your HomeWork...</Text>
                 
                 <Image
                     source={require('../../assets/parenthome.png')}
-                    style={styles.phparentImage}
+                    style={styles.parentImage}
                 />
                 
                 <TouchableOpacity 
-                    style={styles.phbutton} 
+                    style={styles.button} 
                     onPress={() => navigation.navigate('DisplayParentHomework')} // Ensure this matches the registered name
                 >
-                    <Text style={styles.phbuttonText}>Start</Text>
+                    <Text style={styles.buttonText}>Start</Text>
                 </TouchableOpacity>
 
                 <Image
                     source={require('../../assets/homebird.png')}
-                    style={styles.phbirdImage}
+                    style={styles.birdImage}
                 />
             </ScrollView>
         </ImageBackground>
@@ -46,10 +46,10 @@ const ParentHome = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-    phbackground: {
+    background: {
         flex: 1,
     },
-    phfixedHeader: {
+    fixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -63,26 +63,26 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    phheaderContainer: {
+    headerContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    phbackButton: {
+    backButton: {
         fontSize: 18,
         color: 'black',
     },
-    phafterHeaderImage: {
+    afterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    phscrollContainer: {
+    scrollContainer: {
         paddingTop: 170,
         paddingBottom: 30,
     },
-    phpageTitle: {
+    pageTitle: {
         fontSize: 35,
         fontWeight: 'bold',
         marginVertical: 10,
@@ -91,13 +91,13 @@ const styles = StyleSheet.create({
         marginBottom: 30,
         fontFamily:'Unkempt'
     },
-    phparentImage: {
+    parentImage: {
         width: 250, 
         height: 250, 
         marginTop: 10, 
         alignSelf: 'center', 
     },
-    phbutton: {
+    button: {
         backgroundColor: '#6B9AB6', 
         padding: 15,
         borderRadius: 5,
@@ -105,13 +105,13 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: '60%', 
     },
-    phbuttonText: {
+    buttonText: {
         color: 'black',
         textAlign: 'center',
         fontSize: 25,
         fontWeight: 'bold'
     },
-    phbirdImage: {
+    birdImage: {
         width: 70,
         height: 70,
         marginLeft: 280,

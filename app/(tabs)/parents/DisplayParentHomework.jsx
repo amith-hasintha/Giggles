@@ -62,13 +62,13 @@ const DisplayParentHomework = ({ navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/transparentpic.png')}
-            style={styles.dphbackground}
+            style={styles.background}
             resizeMode="cover"
         >
-            <View style={styles.dphfixedHeader}>
-            <View style={styles.dphheaderContainer}>
+            <View style={styles.fixedHeader}>
+            <View style={styles.headerContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('ParentHome')}>
-                        <Text style={styles.dphbackButton}>
+                        <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>
                     </TouchableOpacity>
@@ -78,11 +78,11 @@ const DisplayParentHomework = ({ navigation }) => {
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.dphafterHeaderImage}
+                    style={styles.afterHeaderImage}
                 />
             </View>
 
-            <ScrollView contentContainerStyle={styles.dphscrollContainer}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
                 <Text style={styles.title}>Home Works</Text>
                 {activities.map(activity => (
                     <ImageBackground 
@@ -91,13 +91,13 @@ const DisplayParentHomework = ({ navigation }) => {
                         style={styles.card}
                         imageStyle={{ borderRadius: 10 }} 
                     >
-                        <View style={styles.dphcardContent}>
-                            <Text style={styles.dphcardTitle}>{activity.title}</Text>
+                        <View style={styles.cardContent}>
+                            <Text style={styles.cardTitle}>{activity.title}</Text>
                             <TouchableOpacity 
-                                style={styles.dphcardButton} 
+                                style={styles.cardButton} 
                                 onPress={() => navigation.navigate('WorkSheet', { activityId: activity._id })} // Navigate to the worksheet
                             >
-                                <Text style={styles.dphbuttonText}>Start</Text> 
+                                <Text style={styles.buttonText}>Start</Text> 
                             </TouchableOpacity>
                             
                             {/* Display the worksheet URL if available */}
@@ -110,7 +110,7 @@ const DisplayParentHomework = ({ navigation }) => {
 
                         <Image 
                             source={require('../../assets/homecard.png')} 
-                            style={styles.dphcardBottomImage} 
+                            style={styles.cardBottomImage} 
                         />
                     </ImageBackground>
                 ))}
@@ -118,7 +118,7 @@ const DisplayParentHomework = ({ navigation }) => {
 
             <Image 
                 source={require('../../assets/pinkbird.png')} 
-                style={styles.dphpinkBird}
+                style={styles.pinkBird}
             />
         </ImageBackground>
     );
@@ -127,11 +127,11 @@ const DisplayParentHomework = ({ navigation }) => {
 export default DisplayParentHomework;
 
 const styles = StyleSheet.create({
-    dphbackground: {
+    background: {
         flex: 1,
         backgroundColor: '#96CBE9',
     },
-    dphfixedHeader: {
+    fixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -145,26 +145,26 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    dphheaderContainer: {
+    headerContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    dphbackButton: {
+    backButton: {
         fontSize: 18,
         color: 'black',
     },
-    dphafterHeaderImage: {
+    afterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    dphscrollContainer: {
+    scrollContainer: {
         paddingTop: 170,
         paddingBottom: 30,
     },
-    dphtitle: {
+    title: {
         fontSize: 30,
         fontWeight: 'bold',
         marginVertical: 10,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
         color: '#333',
         marginBottom: 30,
     },
-    dphcard: {
+    card: {
         borderRadius: 10,
         padding: 20,
         marginBottom: 20,
@@ -188,16 +188,16 @@ const styles = StyleSheet.create({
         marginRight: 20,
         position: 'relative', 
     },
-    dphcardContent: {
+    cardContent: {
         flex: 1,
     },
-    dphcardTitle: {
+    cardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
         color: '#304F62',
     },
-    dphcardButton: {
+    cardButton: {
         backgroundColor: '#304F62',
         paddingVertical: 5,  
         paddingHorizontal: 10, 
@@ -211,11 +211,11 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         flexDirection: 'row', 
     },
-    dphbuttonText: {
+    buttonText: {
         color: '#fff', 
         fontSize: 14, 
     },
-    dphcardBottomImage: {
+    cardBottomImage: {
         width: 280,  
         height: 280, 
         position: 'absolute',
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', 
         bottom: -30,
     },
-    dphpinkBird: {
+    pinkBird: {
         position: 'absolute',
         bottom: 0,  
         right: 0,   
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', 
         opacity: 0.6,
     },
-    dphlink: {
+    link: {
         marginTop: 10,
         fontSize: 16,
         color: 'blue',

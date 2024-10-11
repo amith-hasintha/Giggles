@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList, Image, Alert } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList, Image, Alert, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons'; // Icon library for Add button
 import { collection, query, where, getDocs, deleteDoc,doc, onSnapshot} from 'firebase/firestore'; // Firestore query imports
 import { db } from '../configs/FirebaseConfig';
 import Entypo from '@expo/vector-icons/Entypo';
+import Feather from '@expo/vector-icons/Feather';
 
 const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -96,9 +97,11 @@ const showDeleteConfirmation = (mealId) => {
       </TouchableOpacity>
       </View>
       <View style={styles.mealInfo}>
-        <Text style={styles.mealType}>{item.type}</Text>
-        <Text style={styles.mealName}>{item.name}</Text>
-        <Text style={styles.mealTime}>at {item.time}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('MealDetails', { meal: item })}>
+          <Text style={styles.mealType}>{item.type}</Text>
+          <Text style={styles.mealName}>{item.name}</Text>
+          <Text style={styles.mealTime}>at {item.time}</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.mealActions}>
         {/* Show the number of likes in the admin meal card */}
@@ -112,7 +115,23 @@ const showDeleteConfirmation = (mealId) => {
   );
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('./../assets/teacherbackground.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.fixedHeader}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('TeacherHomePage')}>
+            <Feather name="arrow-left-circle" size={28} color="#304F62" />
+          </TouchableOpacity>
+        </View>
+        <Image
+          source={require('./../assets/logo.png')}
+          style={styles.afterHeaderImage}
+        />
+      </View>
+    
       {/* Day Tabs */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.dayTabs}>
         {daysOfWeek.map((day) => (
@@ -150,12 +169,42 @@ const showDeleteConfirmation = (mealId) => {
   <AntDesign name="plus" size={32} color="white" />
 </TouchableOpacity>
 </View>
-</View>
+
+</ImageBackground>
 );
 };
 
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
+  fixedHeader: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: '#ffffff',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    height: 49,
+  
+  },
+  headerContainer: {
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
+  afterHeaderImage: {
+    width: '100%',
+    height: 110,
+    resizeMode: 'cover',
+  },
   container: {
     paddingTop: 40,
     flex: 1,
@@ -164,10 +213,10 @@ const styles = StyleSheet.create({
   container12: {
     paddingTop: 1,
     flex: 70,
-    backgroundColor: '#e6f0fa',
+  
   },
   dayTabs: {
-    marginVertical: 5,
+    paddingTop: 170,
     paddingHorizontal: 5,
   },
   dayTabsSpacing: {
@@ -194,7 +243,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    marginBottom: 10,
     color: '#0C5481',
     fontWeight: 'bold',
     textAlign: 'center',

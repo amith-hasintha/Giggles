@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList, Image, 
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons'; // Icon library for Add button
 import { collection, query, where, getDocs, deleteDoc,doc, onSnapshot} from 'firebase/firestore'; // Firestore query imports
-import { db } from '../../configs/FirebaseConfig';  // Import Firestore configuration
+import { db } from '../configs/FirebaseConfig';
 import Entypo from '@expo/vector-icons/Entypo';
 
 const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];

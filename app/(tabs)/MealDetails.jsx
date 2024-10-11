@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import { db } from '../../configs/FirebaseConfig';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
+import { db } from '../configs/FirebaseConfig';
 
 
 const MealDetail = () => {

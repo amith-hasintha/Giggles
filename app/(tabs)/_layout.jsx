@@ -25,6 +25,11 @@ import AddPaymentForm from './teacher/AddPayment';
 import DisplayPayments from './teacher/DisplayPayments';
 import UpdatePayment from './teacher/UpdatePayment';
 import Payments from './parents/Payments';
+import MealDetail from './MealDetails';
+import MealList from './MealList';
+import UserMealList from './UserMealList';
+import AddMeal from './AddMeal';
+import EditMeal from './EditMeal';
 
 const Tab = createBottomTabNavigator();
 
@@ -228,6 +233,46 @@ const AppNavigator = () => {
             <Tab.Screen
                 name="Payments"
                 component={Payments}   // The Daily Update Form we created earlier
+                options={{ 
+                    headerShown: false,
+                    tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tab.Screen
+                name="MealDetail"
+                component={MealDetail}   // The Daily Update Form we created earlier
+                options={{ 
+                    headerShown: false,
+                    tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tab.Screen
+                name="MealList"
+                component={MealList}   // The Daily Update Form we created earlier
+                options={{ 
+                    headerShown: false,
+                    tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tab.Screen
+                name="UserMealList"
+                component={UserMealList}   // The Daily Update Form we created earlier
+                options={{ 
+                    headerShown: false,
+                    tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tab.Screen
+                name="AddMeal"
+                component={AddMeal}   // The Daily Update Form we created earlier
+                options={{ 
+                    headerShown: false,
+                    tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tab.Screen
+                name="EditMeal"
+                component={EditMeal}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
                     tabBarStyle: { display: 'none' }

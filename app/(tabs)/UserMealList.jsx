@@ -3,7 +3,7 @@ import { View, Text, ScrollView, TouchableOpacity, StyleSheet, FlatList, Image, 
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons'; // Icon library for Like button
 import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore'; // Firestore imports
-import { db } from '../../configs/FirebaseConfig';  // Import Firestore configuration
+import { db } from '../configs/FirebaseConfig';
 
 const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 

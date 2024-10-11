@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { collection, addDoc } from 'firebase/firestore'; // Make sure `addDoc` and `collection` are correctly imported
-import { db } from '../../configs/FirebaseConfig'; // Import Firestore configuration
+import { db } from '../configs/FirebaseConfig';// Import Firestore configuration
 import { useRoute, useNavigation } from '@react-navigation/native'; // React Navigation
 
 const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];

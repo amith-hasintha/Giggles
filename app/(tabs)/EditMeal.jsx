@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image,
 import * as ImagePicker from 'expo-image-picker';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { doc, updateDoc } from 'firebase/firestore';
-import { db } from '../../configs/FirebaseConfig';
+import { db } from '../configs/FirebaseConfig';
 
 const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
 

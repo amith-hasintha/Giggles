@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TextInput, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TextInput, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from './../../configs/FirebaseConfig'; // Adjust the path as needed
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
+import { useNavigation } from '@react-navigation/native'; // Import navigation hook
 
 const Payments = () => {
   const [payments, setPayments] = useState([]);
@@ -10,6 +11,8 @@ const Payments = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [studentId, setStudentId] = useState(null); // State to hold the studentId
+
+  const navigation = useNavigation(); // Navigation hook
 
   // Retrieve student ID from AsyncStorage when the component mounts
   useEffect(() => {
@@ -73,42 +76,55 @@ const Payments = () => {
   }
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Payments</Text>
+    <ImageBackground
+      source={require('../../assets/background.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.container}>
+        <Text style={styles.title}>Payments</Text>
 
-      {/* Display Student ID */}
-      <Text style={styles.studentIdText}>Student ID: {studentId}</Text>
+        {/* Display Student ID */}
+        <Text style={styles.studentIdText}>Student ID: {studentId}</Text>
 
-      {/* Search Bar */}
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Search by Month or Fee"
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
+        {/* Search Bar */}
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search by Month or Fee"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
 
-      {filteredPayments.length === 0 ? (
-        <Text style={styles.noPayments}>No payments available.</Text>
-      ) : (
-        filteredPayments.map(payment => (
-          <ImageBackground key={payment.id} source={require('../../assets/parentbackground.png')} style={styles.paymentContainer}>
-            <Text style={styles.paymentMonth}>Month: {payment.month}</Text>
-            <Text style={styles.paymentDetails}>Monthly Fee: {payment.monthlyFee}</Text>
-            <Text style={styles.paymentDetails}>Paid Fee: {payment.paidFee}</Text>
-            <Text style={styles.paymentDetails}>Remaining Fee: {payment.remainingFee}</Text>
-          </ImageBackground>
-        ))
-      )}
-    </ScrollView>
+        {filteredPayments.length === 0 ? (
+          <Text style={styles.noPayments}>No payments available.</Text>
+        ) : (
+          filteredPayments.map(payment => (
+            <ImageBackground key={payment.id} source={require('../../assets/parentbackground.png')} style={styles.paymentContainer}>
+              <Text style={styles.paymentMonth}>Month: {payment.month}</Text>
+              <Text style={styles.paymentDetails}>Monthly Fee: {payment.monthlyFee}</Text>
+              <Text style={styles.paymentDetails}>Paid Fee: {payment.paidFee}</Text>
+              <Text style={styles.paymentDetails}>Remaining Fee: {payment.remainingFee}</Text>
+            </ImageBackground>
+          ))
+        )}
+      </ScrollView>
+
+      {/* Home Button fixed at the bottom */}
+      <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('ParentHomePage')}>
+        <Image source={require('../../assets/HomeIcon.png')} style={styles.homeIcon} />
+      </TouchableOpacity>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
   container: {
     marginTop: 20,
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
@@ -155,6 +171,15 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
     color: '#333', // Adjust color as needed
+  },
+  homeButton: {
+    position: 'absolute', // Make the button fixed at the bottom
+    bottom: 30,           // Adjust the distance from the bottom
+    alignSelf: 'center',  // Center horizontally
+  },
+  homeIcon: {
+    width: 60,  // Adjust the size of the home icon as needed
+    height: 60,
   },
 });
 

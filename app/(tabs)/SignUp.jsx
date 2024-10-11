@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { collection, addDoc } from "firebase/firestore";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image, ImageBackground } from 'react-native';
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore"; // Import required Firestore functions
 import { db } from './../configs/FirebaseConfig'; // Import Firestore config
 import { useNavigation } from '@react-navigation/native';
 
@@ -18,6 +18,13 @@ const SignUp = () => {
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+  };
+
+  // Function to check if email already exists
+  const isEmailInUse = async (email) => {
+    const q = query(usersCollectionRef, where("email", "==", email)); // Query to check if email exists
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty; // If querySnapshot is not empty, email exists
   };
 
   // Handle SignUp
@@ -45,6 +52,13 @@ const SignUp = () => {
       return;
     }
 
+    // Check if email is already in use
+    const emailInUse = await isEmailInUse(email);
+    if (emailInUse) {
+      Alert.alert("Error", "This email is already in use. Please try logging in.");
+      return;
+    }
+
     try {
       // Add the user to the Firestore users collection
       await addDoc(usersCollectionRef, {
@@ -62,81 +76,111 @@ const SignUp = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+    <ImageBackground
+      source={require('./../assets/background.png')} // Ensure you have the correct path to your background image
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.overlay}>
+        {/* Logo */}
+        <Image 
+          source={require('./../assets/logo.png')} // Ensure you have the correct path to your logo
+          style={styles.logo}
+          resizeMode="contain"
+        />
 
-      {/* User Type Selection */}
-      <Text style={styles.label}>User Type</Text>
-      <View style={styles.userTypeContainer}>
-        <TouchableOpacity 
-          onPress={() => setUserType('parent')} 
-          style={[styles.userTypeButton, userType === 'parent' && styles.activeButton]}>
-          <Text style={styles.userTypeText}>Parent</Text>
+        <Text style={styles.title}>Sign Up</Text>
+
+        {/* User Type Selection */}
+        <Text style={styles.label}>User Type</Text>
+        <View style={styles.userTypeContainer}>
+          <TouchableOpacity 
+            onPress={() => setUserType('parent')} 
+            style={[styles.userTypeButton, userType === 'parent' && styles.activeButton]}>
+            <Text style={styles.userTypeText}>Parent</Text>
+          </TouchableOpacity>
+          <TouchableOpacity 
+            onPress={() => setUserType('teacher')} 
+            style={[styles.userTypeButton, userType === 'teacher' && styles.activeButton]}>
+            <Text style={styles.userTypeText}>Teacher</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Email Input */}
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          placeholderTextColor="#999"
+        />
+        
+        {/* Password Input */}
+        <TextInput
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+          style={styles.input}
+          placeholderTextColor="#999"
+        />
+
+        {/* Student ID Input (only for parents) */}
+        {userType === 'parent' && (
+          <TextInput
+            placeholder="Student ID"
+            value={studentId}
+            onChangeText={setStudentId}
+            style={styles.input}
+            placeholderTextColor="#999"
+          />
+        )}
+
+        {/* Sign Up Button */}
+        <TouchableOpacity onPress={handleSignUp} style={styles.button}>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-          onPress={() => setUserType('teacher')} 
-          style={[styles.userTypeButton, userType === 'teacher' && styles.activeButton]}>
-          <Text style={styles.userTypeText}>Teacher</Text>
+
+        {/* Navigate to Login */}
+        <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.link}>
+          <Text style={styles.linkText}>Already have an account? Login</Text>
         </TouchableOpacity>
       </View>
-
-      {/* Email Input */}
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={styles.input}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      
-      {/* Password Input */}
-      <TextInput
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        style={styles.input}
-      />
-
-      {/* Student ID Input (only for parents) */}
-      {userType === 'parent' && (
-        <TextInput
-          placeholder="Student ID"
-          value={studentId}
-          onChangeText={setStudentId}
-          style={styles.input}
-        />
-      )}
-
-      {/* Sign Up Button */}
-      <TouchableOpacity onPress={handleSignUp} style={styles.button}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-
-      {/* Navigate to Login */}
-      <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.link}>
-        <Text style={styles.linkText}>Already have an account? Login</Text>
-      </TouchableOpacity>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  overlay: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',  // Semi-transparent overlay
     padding: 20,
-    justifyContent: 'center',
+    borderRadius: 10,
+    width: '90%',
+    alignItems: 'center',
+  },
+  logo: {
+    width: '100%',   // Adjust the width and height of your logo as needed
+    height: 120,
+    marginBottom: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: 30,
+    textAlign: "center",
   },
   label: {
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: 18,
+    color:'#000',
+    marginBottom: 10,
   },
   userTypeContainer: {
     flexDirection: 'row',
@@ -159,18 +203,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   input: {
+    width: "100%",
     height: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 10,
     marginBottom: 15,
+    backgroundColor: "#fff",
+    fontSize: 16,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
   },
   button: {
     backgroundColor: '#4CAF50',
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
+    width: "100%",
   },
   buttonText: {
     color: '#fff',

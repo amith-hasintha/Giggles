@@ -74,7 +74,7 @@ const DisplayPayments = ({ navigation }) => {
         >
             <View style={styles.header}>
                 <View style={styles.headerContainer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('TeacherHomePage')}>
                         <Text style={styles.backButton}>
                             <Feather name="arrow-left-circle" size={24} color="black" />
                         </Text>

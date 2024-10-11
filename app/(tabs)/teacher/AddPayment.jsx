@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ImageBackground, ScrollView } from 'react-native';
+import {Image, View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ImageBackground, ScrollView } from 'react-native';
 import { Picker } from '@react-native-picker/picker'; // Updated import for Picker
 import { db } from '../../configs/FirebaseConfig'; // Assuming firebase is configured in firebaseConfig
 import { collection, addDoc } from 'firebase/firestore'; // Firestore functions
@@ -143,6 +143,9 @@ const AddPaymentForm = ({ navigation }) => {
           </TouchableOpacity>
         </ScrollView>
       </View>
+      <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('TeacherHomePage')}>
+          <Image source={require('../../assets/HomeIcon.png')} style={styles.homeIcon} />
+      </TouchableOpacity>
     </ImageBackground>
   );
 };
@@ -217,6 +220,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  homeButton: {
+    position: 'absolute', // Make the button fixed at the bottom
+    bottom: 30,           // Adjust the distance from the bottom
+    alignSelf: 'center',  // Center horizontally
+  },
+  homeIcon: {
+    width: 60,  // Adjust the size of the home icon as needed
+    height: 60,
   },
 });
 

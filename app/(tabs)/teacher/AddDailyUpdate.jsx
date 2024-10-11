@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ImageBackground, ScrollView } from 'react-native';
+import {Image, View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ImageBackground, ScrollView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { initializeApp } from "firebase/app"; // Import Firebase app functions
 import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"; // Firestore functions
@@ -143,6 +143,9 @@ const DailyUpdateForm = ({ navigation }) => {
           </TouchableOpacity>
         </ScrollView>
       </View>
+      <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('TeacherHomePage')}>
+          <Image source={require('../../assets/HomeIcon.png')} style={styles.homeIcon} />
+      </TouchableOpacity>
     </ImageBackground>
   );
 };
@@ -215,6 +218,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  homeButton: {
+    position: 'absolute', // Make the button fixed at the bottom
+    bottom: 30,           // Adjust the distance from the bottom
+    alignSelf: 'center',  // Center horizontally
+  },
+  homeIcon: {
+    width: 60,  // Adjust the size of the home icon as needed
+    height: 60,
   },
 });
 

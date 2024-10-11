@@ -31,6 +31,7 @@ import MealList from './MealList';
 import UserMealList from './UserMealList';
 import AddMeal from './AddMeal';
 import EditMeal from './EditMeal';
+import UserMealDetails from './UserMealDetails';
 
 const Tab = createBottomTabNavigator();
 
@@ -276,6 +277,14 @@ const AppNavigator = () => {
             <Tab.Screen
                 name="EditMeal"
                 component={EditMeal}   // The Daily Update Form we created earlier
+                options={{ 
+                    headerShown: false,
+            tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tab.Screen
+                name="UserMealDetails"
+                component={UserMealDetails}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
             tabBarStyle: { display: 'none' }

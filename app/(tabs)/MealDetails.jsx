@@ -1,71 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert, ScrollView , ImageBackground} from 'react-native';
+import { useRoute, useNavigation  } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from '../configs/FirebaseConfig';
+import Feather from '@expo/vector-icons/Feather';
 
 
 const MealDetail = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const { meal } = route.params;
-  const userId = 'sampleUserId'; // Replace with the actual user ID if you have authentication setup
-  const [likes, setLikes] = useState(meal.likes || 0);
-  const [isLiked, setIsLiked] = useState(false);
+ 
 
   useEffect(() => {
-    checkIfLiked();
+  
   }, []);
 
-  // Check if the meal is liked by this user
-  const checkIfLiked = async () => {
-    try {
-      const mealRef = doc(db, 'meals', meal.id);
-      const mealSnapshot = await getDoc(mealRef);
-
-      if (mealSnapshot.exists()) {
-        const mealData = mealSnapshot.data();
-        // Check if `likedBy` field includes the current user ID
-        setIsLiked(mealData.likedBy && mealData.likedBy.includes(userId));
-      }
-    } catch (error) {
-      console.error('Error checking like status:', error);
-    }
-  };
-
-  // Function to handle like button press
-  const handleLike = async () => {
-    try {
-      const mealRef = doc(db, 'meals', meal.id);
-      let newLikes = likes;
-      let newLikedBy = meal.likedBy || []; // Initialize likedBy array
-
-      // Toggle like and unlike
-      if (isLiked) {
-        // User is unliking the meal
-        newLikes -= 1;
-        newLikedBy = newLikedBy.filter((id) => id !== userId); // Remove userId from likedBy array
-      } else {
-        // User is liking the meal
-        newLikes += 1;
-        newLikedBy.push(userId); // Add userId to likedBy array
-      }
-
-      setLikes(newLikes); // Update the local state with the new likes count
-      setIsLiked(!isLiked); // Toggle the liked state
-
-      // Update Firestore with the new likes count and likedBy array
-      await updateDoc(mealRef, {
-        likes: newLikes,
-        likedBy: newLikedBy,
-      });
-    } catch (error) {
-      console.error('Error updating likes:', error);
-      Alert.alert('Error updating likes. Please try again.');
-    }
-  };
+  
+ 
 
   return (
+    <ImageBackground
+      source={require('./../assets/teacherbackground.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <View style={styles.fixedHeader}>
+        <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('MealList')}>
+            <Feather name="arrow-left-circle" size={28} color="#304F62" />
+          </TouchableOpacity>
+        </View>
+        <Image
+          source={require('./../assets/logo.png')}
+          style={styles.afterHeaderImage}
+        />
+      </View>
     <View style={styles.container}>
       {/* Meal Image */}
       <View style={styles.imageContainer}>
@@ -94,26 +65,48 @@ const MealDetail = () => {
       
       </ScrollView>
 
-      <TouchableOpacity style={styles.likeButton} onPress={handleLike}>
-        <AntDesign
-          name={isLiked ? 'like1' : 'like2'}
-          size={24}
-          color={isLiked ? 'black' : 'black'} // Change color based on liked state
-        />
-        
-      </TouchableOpacity>
+      
       </View>
     </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
+  fixedHeader: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
+    backgroundColor: '#ffffff',
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    height: 49,
+  
+  },
+  headerContainer: {
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
+  afterHeaderImage: {
+    width: '100%',
+    height: 110,
+    resizeMode: 'cover',
+  },
     container: {
         flex: 1,
-        backgroundColor: '#f4f7fa',
       },
       imageContainer: {
-        marginTop: 80,
+        marginTop: 170,
         alignItems: 'center',
         marginVertical: 20,
       },
@@ -125,11 +118,11 @@ const styles = StyleSheet.create({
         borderColor: '#0C5481',
       },
       detailsContainer: {
-        marginTop: 20,
+        marginTop: -8,
         backgroundColor: '#fff',
-    paddingHorizontal: 20,
-    marginEnd:5,
-    borderTopRightRadius: 50,
+    paddingHorizontal: 25,
+    marginEnd:15,
+    borderTopRightRadius: 70,
     height: 800,
     shadowColor: '#000',                // Shadow for elevation
   shadowOffset: { width: 0, height: -2 }, // Slight upward shadow

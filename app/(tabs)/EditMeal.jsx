@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Alert, ImageBackground } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { doc, updateDoc } from 'firebase/firestore';
@@ -76,6 +76,11 @@ const EditMeal = () => {
   };
 
   return (
+    <ImageBackground
+      source={require('./../assets/teacherbackground.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
     <ScrollView style={styles.container}>
       <View style={styles.container2}>
         <Text style={styles.title}>Edit Meal</Text>
@@ -155,13 +160,17 @@ const EditMeal = () => {
         </View>
       </View>
     </ScrollView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
     container: {
       flex: 1,
-      backgroundColor: '#f0f8ff',
+  
       
     },
     container2: {
@@ -174,7 +183,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.2,
       shadowRadius: 10,
       elevation: 5,
-      marginTop: 50,
+      marginTop: 80,
     },
     header: {
       backgroundColor: '#4A90E2',
@@ -266,7 +275,7 @@ const styles = StyleSheet.create({
       textAlign: 'center',
     },
     saveButton: {
-      backgroundColor: '#4A90E2',
+      backgroundColor: '#0B4A71',
       padding: 15,
       borderRadius: 30,
       width: 120,

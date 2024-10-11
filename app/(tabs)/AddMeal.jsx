@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Image, Alert,ImageBackground } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { collection, addDoc } from 'firebase/firestore'; // Make sure `addDoc` and `collection` are correctly imported
 import { db } from '../configs/FirebaseConfig';// Import Firestore configuration
 import { useRoute, useNavigation } from '@react-navigation/native'; // React Navigation
+import Feather from '@expo/vector-icons/Feather';
 
 const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
 
@@ -66,6 +67,11 @@ const AddMeal = () => {
   
 
   return (
+    <ImageBackground
+      source={require('./../assets/teacherbackground.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
     <ScrollView style={styles.container}>
       <View style={styles.container2}>
       <Text style={styles.title}>Add Meal</Text>
@@ -136,7 +142,7 @@ const AddMeal = () => {
         {/* Buttons */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.cancelButton}>
-            <Text style={styles.cancelButtonText}>Cancel</Text>
+            <Text style={styles.cancelButtonText} onPress={() => navigation.navigate('MealList')}>Cancel</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
             <Text style={styles.saveButtonText}>Save</Text>
@@ -145,13 +151,17 @@ const AddMeal = () => {
         </View>
       </View>
     </ScrollView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f0f8ff',
+  
     
   },
   container2: {
@@ -164,7 +174,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 10,
     elevation: 5,
-    marginTop: 50,
+    marginTop: 70,
   },
   header: {
     backgroundColor: '#4A90E2',
@@ -256,7 +266,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   saveButton: {
-    backgroundColor: '#4A90E2',
+    backgroundColor: '#0B4A71',
     padding: 15,
     borderRadius: 30,
     width: 120,

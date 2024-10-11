@@ -46,7 +46,7 @@ const AppNavigator = () => {
                 component={Login} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -54,7 +54,7 @@ const AppNavigator = () => {
                 component={Homepg1} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -78,7 +78,7 @@ const AppNavigator = () => {
                 component={Homepg4} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -86,7 +86,7 @@ const AppNavigator = () => {
                 component={TeacherHomePage} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -94,7 +94,7 @@ const AppNavigator = () => {
                 component={ParentHomePage} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -278,7 +278,7 @@ const AppNavigator = () => {
                 component={EditMeal}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+            tabBarStyle: { display: 'none' }
                 }}
             />
          

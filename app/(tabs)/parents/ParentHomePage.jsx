@@ -25,11 +25,11 @@ const ParentHomePage = ({ navigation }) => {
     return (
         <ImageBackground
             source={require('../../assets/parenthomepg.png')} // Change this to your background image
-            style={styles.phpcontainer}
+            style={styles.container}
             resizeMode="cover"
         >
-            <View style={styles.phpfixedHeader}>
-                <View style={styles.phpheaderContainer}>
+            <View style={styles.fixedHeader}>
+                <View style={styles.headerContainer}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Feather name="arrow-left-circle" size={24} color="black" />
                     </TouchableOpacity>
@@ -39,12 +39,12 @@ const ParentHomePage = ({ navigation }) => {
                 </View>
                 <Image
                     source={require('../../assets/logo.png')}
-                    style={styles.phpafterHeaderImage}
+                    style={styles.afterHeaderImage}
                 />
             </View>
 
-            <View style={styles.phpwelcomeContainer}>
-                <Text style={styles.phpwelcomeText}>Welcome Parent!</Text>
+            <View style={styles.welcomeContainer}>
+                <Text style={styles.welcomeText}>Welcome Parent!</Text>
                 {studentId && (
                     <Text style={styles.studentIdText}>Student ID: {studentId}</Text>
                 )}
@@ -52,14 +52,18 @@ const ParentHomePage = ({ navigation }) => {
 
             <View style={styles.overlay}>
                 <ScrollView
-                    contentContainerStyle={styles.phpscrollContainer}
+                    contentContainerStyle={styles.scrollContainer}
                     showsVerticalScrollIndicator={false}
                     keyboardShouldPersistTaps="handled"
                 >
                     <View style={styles.gridContainer}>
                         {[
                             { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: 'DailyUpdates' },
+<<<<<<< HEAD
                             { title: 'Activities', image: require('../../assets/activity.png'), screen: 'Activities' },
+=======
+                            { title: 'Activities', image: require('../../assets/activity.png'), screen: 'ParentHome' },
+>>>>>>> f2a8bd68f885296a6841034b9f471e84012909de
                             { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: 'UserMealList' },
                             { title: 'Payment Details', image: require('../../assets/payment.png'), screen: 'Payments' },
                         ].map((item, index) => (
@@ -77,12 +81,12 @@ const ParentHomePage = ({ navigation }) => {
                                 }}
                             >
                                 <Image source={item.image} style={styles.icon} />
-                                <Text style={styles.phpbuttonText}>{item.title}</Text>
+                                <Text style={styles.buttonText}>{item.title}</Text>
                             </TouchableOpacity>
                         ))}
                     </View>
 
-                    <Text style={styles.phpfooterText}>© 2024 Giggles. All rights reserved.</Text>
+                    <Text style={styles.footerText}>© 2024 Giggles. All rights reserved.</Text>
                 </ScrollView>
             </View>
         </ImageBackground>
@@ -90,11 +94,11 @@ const ParentHomePage = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    phpcontainer: {
+    container: {
         flex: 1,
         opacity: 0.9,
     },
-    phpfixedHeader: {
+    fixedHeader: {
         position: 'absolute',
         top: 0,
         left: 0,
@@ -108,29 +112,29 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         height: 49,
     },
-    phpheaderContainer: {
+    headerContainer: {
         padding: 13,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
     },
-    phpafterHeaderImage: {
+    afterHeaderImage: {
         width: '100%',
         height: 110,
         resizeMode: 'cover',
     },
-    phpwelcomeContainer: {
+    welcomeContainer: {
         marginTop: 180,
         alignItems: 'center',
         paddingBottom: 20,
     },
-    phpscrollContainer: {
+    scrollContainer: {
         flexGrow: 1,
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 20,
     },
-    phpwelcomeText: {
+    welcomeText: {
         fontSize: 30,
         fontWeight: '700',
         color: 'white',
@@ -153,7 +157,7 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
     },
-    phpbuttonText: {
+    buttonText: {
         marginTop: 10,
         fontSize: 16,
         fontWeight: '500',
@@ -165,7 +169,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
-    phpfooterText: {
+    footerText: {
         fontSize: 12,
         color: 'white',
         textAlign: 'center',

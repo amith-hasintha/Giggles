@@ -1,5 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import TeacherHome from './teacher/TeacherHome';
 import TeacherHomeWork from './teacher/TeacherHomeWork';
 import DisplayTeacherHomework from './teacher/DisplayTeacherHomework';
@@ -33,10 +34,12 @@ import EditMeal from './EditMeal';
 
 const Tab = createBottomTabNavigator();
 
+
+
 const AppNavigator = () => {
     return (
         
-            
+         
         <Tab.Navigator>
             <Tab.Screen 
                 name="Login" 
@@ -239,7 +242,7 @@ const AppNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name="MealDetail"
+                name="MealDetails"
                 component={MealDetail}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
@@ -278,7 +281,10 @@ const AppNavigator = () => {
             tabBarStyle: { display: 'none' }
                 }}
             />
+         
+      
         </Tab.Navigator>
+      
     );
 };
 

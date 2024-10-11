@@ -14,9 +14,34 @@ const SignUp = () => {
   // Firestore Collection Reference
   const usersCollectionRef = collection(db, "users");
 
+  // Email validation function
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  // Handle SignUp
   const handleSignUp = async () => {
     if (!email || !password) {
       Alert.alert("Error", "Please fill out all required fields.");
+      return;
+    }
+
+    // Email validation
+    if (!isValidEmail(email)) {
+      Alert.alert("Error", "Please enter a valid email address.");
+      return;
+    }
+
+    // Password validation
+    if (password.length < 6) {
+      Alert.alert("Error", "Password must be at least 6 characters long.");
+      return;
+    }
+
+    // Student ID validation for parents
+    if (userType === 'parent' && !studentId) {
+      Alert.alert("Error", "Please enter a valid Student ID.");
       return;
     }
 
@@ -61,6 +86,8 @@ const SignUp = () => {
         value={email}
         onChangeText={setEmail}
         style={styles.input}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
       
       {/* Password Input */}

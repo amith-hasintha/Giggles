@@ -278,6 +278,19 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     opacity: 0.6,
   },
+  addButton: {
+    backgroundColor: '#304F62',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    margin: 20,
+  },
+  addButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
 });
 
 export default DisplayDailyUpdates;

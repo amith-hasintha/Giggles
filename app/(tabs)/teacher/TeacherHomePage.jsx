@@ -38,7 +38,7 @@ const TeacherHomePage = ({ navigation }) => {
             {[
               { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: 'DisplayDailyUpdates' },
               { title: 'Activities', image: require('../../assets/activity.png'), screen: 'TeacherHome' },
-              { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: '' },
+              { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: 'MealList' },
               { title: 'Payment Details', image: require('../../assets/payment.png'), screen: 'DisplayPayments' },
             ].map((item, index) => (
               <TouchableOpacity 

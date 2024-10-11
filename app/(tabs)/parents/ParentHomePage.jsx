@@ -60,7 +60,7 @@ const ParentHomePage = ({ navigation }) => {
                         {[
                             { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: 'DailyUpdates' },
                             { title: 'Activities', image: require('../../assets/activity.png'), screen: 'Activities' },
-                            { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: 'MealTracking' },
+                            { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: 'UserMealList' },
                             { title: 'Payment Details', image: require('../../assets/payment.png'), screen: 'Payments' },
                         ].map((item, index) => (
                             <TouchableOpacity

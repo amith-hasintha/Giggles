@@ -59,11 +59,7 @@ const ParentHomePage = ({ navigation }) => {
                     <View style={styles.gridContainer}>
                         {[
                             { title: 'Daily Updates', image: require('../../assets/updates.png'), screen: 'DailyUpdates' },
-<<<<<<< HEAD
-                            { title: 'Activities', image: require('../../assets/activity.png'), screen: 'Activities' },
-=======
                             { title: 'Activities', image: require('../../assets/activity.png'), screen: 'ParentHome' },
->>>>>>> f2a8bd68f885296a6841034b9f471e84012909de
                             { title: 'Meal Tracking', image: require('../../assets/meal.png'), screen: 'UserMealList' },
                             { title: 'Payment Details', image: require('../../assets/payment.png'), screen: 'Payments' },
                         ].map((item, index) => (

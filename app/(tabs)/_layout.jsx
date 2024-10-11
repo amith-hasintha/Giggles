@@ -59,7 +59,7 @@ const AppNavigator = () => {
                 component={Homepg2} 
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -67,7 +67,7 @@ const AppNavigator = () => {
                 component={Homepg3} 
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -83,7 +83,7 @@ const AppNavigator = () => {
                 component={TeacherHomePage} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -91,7 +91,7 @@ const AppNavigator = () => {
                 component={ParentHomePage} 
                 options={{ 
                     headerShown: false,
-                    //tabBarStyle: { display: 'none' }
+                    tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen 
@@ -203,7 +203,7 @@ const AppNavigator = () => {
                 component={DailyUpdates}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen
@@ -243,7 +243,7 @@ const AppNavigator = () => {
                 component={MealDetail}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen
@@ -251,7 +251,7 @@ const AppNavigator = () => {
                 component={MealList}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen
@@ -259,7 +259,7 @@ const AppNavigator = () => {
                 component={UserMealList}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen
@@ -267,7 +267,7 @@ const AppNavigator = () => {
                 component={AddMeal}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+                    //tabBarStyle: { display: 'none' }
                 }}
             />
             <Tab.Screen
@@ -275,7 +275,7 @@ const AppNavigator = () => {
                 component={EditMeal}   // The Daily Update Form we created earlier
                 options={{ 
                     headerShown: false,
-                    tabBarStyle: { display: 'none' }
+            tabBarStyle: { display: 'none' }
                 }}
             />
         </Tab.Navigator>

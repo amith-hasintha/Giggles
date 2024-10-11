@@ -3,19 +3,19 @@ import { View, ImageBackground, StyleSheet, TouchableOpacity, Text } from 'react
 
 const Homepg3 = ({ navigation }) => {
   return (
-    <View style={styles.homcontainer}>
+    <View style={styles.container}>
       <ImageBackground
         source={require('../assets/home3.png')}
-        style={styles.hombackgroundImage}
+        style={styles.backgroundImage}
         resizeMode="cover"
       >
-        <View style={styles.hombuttonContainer}>
-          <TouchableOpacity style={styles.hombutton1} onPress={() => navigation.navigate('Homepg2')}>
-            <Text style={styles.hombuttonText}>Back</Text>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button1} onPress={() => navigation.navigate('Homepg2')}>
+            <Text style={styles.buttonText}>Back</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.hombutton2} onPress={() => navigation.navigate('Homepg4')}>
-            <Text style={styles.hombuttonText}>Skip</Text>
+          <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('Homepg4')}>
+            <Text style={styles.buttonText}>Skip</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -24,17 +24,17 @@ const Homepg3 = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  homcontainer: {
+  container: {
     flex: 1,
   },
-  hombackgroundImage: {
+  backgroundImage: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
   },
-  hombuttonContainer: {
+  buttonContainer: {
     position: 'absolute',
     bottom: 20,
     flexDirection: 'row',
@@ -42,21 +42,21 @@ const styles = StyleSheet.create({
     width: '100%',                  // Full width to position buttons on both sides
     paddingHorizontal: 20,          // Padding for spacing from the screen edges
   },
-  hombutton1: {
+  button1: {
     backgroundColor: '#FC9144',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
     width: '40%', // Width of the left button
   },
-  hombutton2: {
+  button2: {
     backgroundColor: '#FFD339',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 25,
     width: '40%', // Width of the right button
   },
-  hombuttonText: {
+  buttonText: {
     color: 'black',
     fontSize: 16,
     fontWeight: 'bold',

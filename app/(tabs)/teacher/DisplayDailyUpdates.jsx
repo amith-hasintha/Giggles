@@ -73,7 +73,7 @@ const DisplayDailyUpdates = ({ navigation }) => {
     >
       <View style={styles.dthfixedHeader}>
         <View style={styles.dthheaderContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('TeacherHome')}>
+          <TouchableOpacity onPress={() => navigation.navigate('TeacherHomePage')}>
             <Text style={styles.dthbackButton}>
               <Feather name="arrow-left-circle" size={24} color="black" />
             </Text>
@@ -123,7 +123,7 @@ const DisplayDailyUpdates = ({ navigation }) => {
                 )}
               </View>
               {/* <Image source={require('../../assets/homecard.png')} style={styles.dthcardBottomImage} /> */}
-              <View style={styles.icons}>
+              
                 <TouchableOpacity
                   style={styles.dthiconButton}
                   onPress={() => handleDeleteUpdate(update.id)}
@@ -136,18 +136,23 @@ const DisplayDailyUpdates = ({ navigation }) => {
                 >
                   <Ionicons name="create" size={24} color="black" />
                 </TouchableOpacity>
-              </View>
+              
             </ImageBackground>
           ))
         )}
       </ScrollView>
+      <View style={styles.v1}>
       <TouchableOpacity 
                 style={styles.addButton} 
                 onPress={() => navigation.navigate('DailyUpdateForm')}
             >
                 <Text style={styles.addButtonText}>Add New Update</Text>
         </TouchableOpacity>
+        
+        </View>
+      
       <Image source={require('../../assets/pinkbird.png')} style={styles.dthpinkBird} />
+      
     </ImageBackground>
   );
 };
@@ -158,7 +163,7 @@ const styles = StyleSheet.create({
   },
   dthfixedHeader: {
     position: 'absolute',
-    top: 0,
+    top: 5,
     left: 0,
     right: 0,
     zIndex: 1,
@@ -190,7 +195,7 @@ const styles = StyleSheet.create({
   },
   dthscrollContainer: {
     paddingTop: 170,
-    paddingBottom: 30,
+    paddingBottom: 40,
   },
   dthtitle: {
     fontSize: 30,
@@ -257,9 +262,10 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   dthiconButton: {
-    marginLeft: 10,
-    marginBottom: 5,
-    marginTop: -30,
+    
+     marginLeft: 10,
+    // marginBottom: 5,
+    // marginTop: -30,
   },
   dthcardBottomImage: {
     width: 180,
@@ -283,13 +289,17 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
-    margin: 20,
+    marginBottom: 10,
+    width:'90%'
   },
   addButtonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
+  v1:{
+    alignItems:'center',
+  }
 
 });
 

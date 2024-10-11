@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, StyleSheet, Alert, ActivityIndicator } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, Button, StyleSheet, Alert, ActivityIndicator, TouchableOpacity, Image, ImageBackground } from "react-native";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from './../configs/FirebaseConfig';  // Ensure this is the path to your firebaseConfig.js
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
@@ -10,7 +10,6 @@ const Login = () => {
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([]);
-
     const navigation = useNavigation();
 
     // Fetch users from Firestore when the component is focused
@@ -21,10 +20,8 @@ const Login = () => {
                 try {
                     const usersCollection = collection(db, "users");
                     const userSnapshot = await getDocs(usersCollection);
-                    const usersList = userSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })); // Include user ID
+                    const usersList = userSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                     setUsers(usersList);
-
-                    // Log the fetched users for debugging
                     console.log("Fetched users:", usersList);
                 } catch (error) {
                     console.error("Error fetching users:", error);
@@ -34,8 +31,6 @@ const Login = () => {
             };
 
             fetchUsers();
-
-            // Cleanup function (if needed) can be returned here
         }, [])
     );
 
@@ -44,37 +39,28 @@ const Login = () => {
             Alert.alert("Error", "Please enter both email and password.");
             return;
         }
-    
-        // Trim and compare email in a case-insensitive manner
+
         const trimmedEmail = email.trim().toLowerCase();
         const user = users.find((u) => u.email.trim().toLowerCase() === trimmedEmail);
-    
+
         if (!user) {
             Alert.alert("Error", "Invalid email.");
             return;
         }
-    
-        // Check password
+
         if (user.password !== password) {
             Alert.alert("Error", "Incorrect password.");
             return;
         }
-    
-        // Save student ID in AsyncStorage if the user is a parent
-        if (user.user_Type === "parent") {
-            if (user.studentId) { // Use the correct key here
-                try {
-                    await AsyncStorage.setItem('studentId', user.studentId); // Save the student ID
-                    console.log("Student ID saved to AsyncStorage:", user.studentId);
-                } catch (error) {
-                    console.error("Error saving student ID to AsyncStorage:", error);
-                }
-            } else {
-                console.error("Student ID is undefined for user:", user); // Log if studentId is undefined
+
+        if (user.user_Type === "parent" && user.studentId) {
+            try {
+                await AsyncStorage.setItem('studentId', user.studentId);
+            } catch (error) {
+                console.error("Error saving student ID to AsyncStorage:", error);
             }
         }
-    
-        // Navigate based on user type
+
         switch (user.user_Type) {
             case "teacher":
                 navigation.navigate("TeacherHomePage", { userEmail: user.email });
@@ -86,7 +72,7 @@ const Login = () => {
                 navigation.navigate("/", { userEmail: user.email });
         }
     };
-    
+
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
@@ -96,59 +82,113 @@ const Login = () => {
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={(text) => setEmail(text)}
-                keyboardType="email-address"
-                autoCapitalize="none" // Disable auto-capitalization for email
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Password"
-                value={password}
-                onChangeText={(text) => setPassword(text)}
-                secureTextEntry
-            />
-            <Button title="Login" onPress={handleLogin} />
-            <Text style={styles.signupText}>
-                Don't have an account?{" "}
-                <Text style={styles.signupLink} onPress={() => navigation.navigate("SignUp")}>
-                    Sign Up
+        <ImageBackground
+            source={require('./../assets/background.png')}  // Ensure you have the correct path to your background image
+            style={styles.background}
+            resizeMode="cover"
+        >
+            <View style={styles.overlay}>
+                {/* Logo */}
+                <Image 
+                    source={require('./../assets/logo.png')}  // Ensure you have the correct path to your logo
+                    style={styles.logo}
+                    resizeMode="contain"
+                />
+                <Text style={styles.title}>Login</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={(text) => setEmail(text)}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    placeholderTextColor="#999"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
+                    secureTextEntry
+                    placeholderTextColor="#999"
+                />
+                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                    <Text style={styles.loginButtonText}>Login</Text>
+                </TouchableOpacity>
+                <Text style={styles.signupText}>
+                    Don't have an account?{" "}
+                    <Text style={styles.signupLink} onPress={() => navigation.navigate("SignUp")}>
+                        Sign Up
+                    </Text>
                 </Text>
-            </Text>
-        </View>
+            </View>
+        </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
+    background: {
         flex: 1,
         justifyContent: "center",
+        alignItems: "center",
+    },
+    overlay: {
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',  // Semi-transparent overlay
         padding: 20,
+        borderRadius: 10,
+        width: '90%',
+        alignItems: 'center',
+    },
+    logo: {
+        width: '100%',   // Adjust the width and height of your logo as needed
+        height: 120,
+        marginBottom: 20,
     },
     title: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: "bold",
-        marginBottom: 20,
+        color: "#333",
+        marginBottom: 30,
         textAlign: "center",
     },
     input: {
+        width: "100%",
+        padding: 15,
         borderWidth: 1,
         borderColor: "#ccc",
-        padding: 10,
-        marginBottom: 10,
-        borderRadius: 5,
+        borderRadius: 10,
+        marginBottom: 15,
+        backgroundColor: "#fff",
+        fontSize: 16,
+        shadowColor: "#000",
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 2 },
     },
-    signupText: {
+    loginButton: {
+        backgroundColor: "#4CAF50",
+        paddingVertical: 15,
+        paddingHorizontal: 40,
+        borderRadius: 10,
         marginTop: 20,
+        shadowColor: "#000",
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 2 },
+    },
+    loginButtonText: {
+        color: "#fff",
+        fontSize: 18,
+        fontWeight: "600",
         textAlign: "center",
     },
+    signupText: {
+        marginTop: 30,
+        fontSize: 16,
+        color: "#333",
+    },
     signupLink: {
-        color: "blue",
+        color: "#4CAF50",
         fontWeight: "bold",
     },
     loadingContainer: {

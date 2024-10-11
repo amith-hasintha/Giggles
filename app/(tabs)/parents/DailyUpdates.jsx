@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TextInput, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, TextInput, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from './../../configs/FirebaseConfig'; // Adjust the path as needed
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
 
-const DailyUpdates = ({ route }) => {
+const DailyUpdates = ({ navigation }) => {
   const [updates, setUpdates] = useState([]);
   const [filteredUpdates, setFilteredUpdates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,41 +72,48 @@ const DailyUpdates = ({ route }) => {
 
   return (
     <ImageBackground
-            source={require('../../assets/teacherbackground.png')}
-            style={styles.background}
-            resizeMode="cover"
-        >
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Daily Updates</Text>
+      source={require('../../assets/background.png')}
+      style={styles.background}
+      resizeMode="cover"
+    >
+      <ScrollView style={styles.container}>
+        <Text style={styles.title}>Daily Updates</Text>
 
-      {/* Display Student ID */}
-      <Text style={styles.studentIdText}>Student ID: {studentId}</Text>
+        {/* Display Student ID */}
+        <Text style={styles.studentIdText}>Student ID: {studentId}</Text>
 
-      {/* Search Bar */}
-      <TextInput
-        style={styles.searchBar}
-        placeholder="Search by Update Text"
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
+        {/* Search Bar */}
+        <TextInput
+          style={styles.searchBar}
+          placeholder="Search by Update Text"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+        />
 
-      {filteredUpdates.length === 0 ? (
-        <Text style={styles.noUpdates}>No updates available.</Text>
-      ) : (
-        filteredUpdates.map(update => (
-          <ImageBackground key={update.id} source={require('../../assets/parentbackground.png')} style={styles.updateContainer}>
-            <Text style={styles.updateDate}>{update.date}</Text>
-            <Text style={styles.updateText}>Update: {update.updateText}</Text>
+        {filteredUpdates.length === 0 ? (
+          <Text style={styles.noUpdates}>No updates available.</Text>
+        ) : (
+          filteredUpdates.map(update => (
+            <ImageBackground key={update.id} source={require('../../assets/parentbackground.png')} style={styles.updateContainer}>
+              <Text style={styles.updateDate}>{update.date}</Text>
+              <Text style={styles.updateText}>Update: {update.updateText}</Text>
 
-            {update.attachment ? (
-              <Image source={{ uri: update.attachment }} style={styles.attachmentImage} />
-            ) : (
-              <Text style={styles.noAttachmentText}>No attachment available</Text>
-            )}
-          </ImageBackground>
-        ))
-      )}
-    </ScrollView>
+              {update.attachment ? (
+                <Image source={{ uri: update.attachment }} style={styles.attachmentImage} />
+              ) : (
+                <Text style={styles.noAttachmentText}>No attachment available</Text>
+              )}
+            </ImageBackground>
+          ))
+        )}
+      </ScrollView>
+
+      {/* Home Button centered at the bottom */}
+      <View style={styles.homeButtonContainer}>
+        <TouchableOpacity style={styles.homeButton} onPress={() => navigation.navigate('ParentHomePage')}>
+          <Image source={require('../../assets/HomeIcon.png')} style={styles.homeIcon} />
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 };
@@ -114,12 +121,11 @@ const DailyUpdates = ({ route }) => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-},
+  },
   container: {
-    marginTop:20,
+    marginTop: 20,
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
@@ -165,7 +171,7 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     marginTop: 10,
-    marginBottom:10,
+    marginBottom: 10,
     resizeMode: 'contain',
   },
   noAttachmentText: {
@@ -178,7 +184,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
-    color: '#333', // Adjust color as needed
+    color: '#333',
+  },
+  
+  homeButton: {
+    position: 'absolute', // Make the button fixed at the bottom
+    bottom: 30,           // Adjust the distance from the bottom
+    alignSelf: 'center',  // Center horizontally
+  },
+  homeIcon: {
+    width: 60,  // Adjust the size of the home icon as needed
+    height: 60,
   },
 });
 

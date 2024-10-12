@@ -106,10 +106,12 @@ const showDeleteConfirmation = (mealId) => {
       <View style={styles.mealActions}>
         {/* Show the number of likes in the admin meal card */}
         <TouchableOpacity disabled style={styles.likeContainer}>
-        <AntDesign name="like1" size={18} color="black" style={styles.likeIconButton} />
+        <AntDesign name="like1" size={18} color="black" style={styles.IconButton} />
           <Text style={styles.likeCount}>{item.likes || 0}</Text>
         </TouchableOpacity>
-        <AntDesign name="delete" size={18} color="black" style={styles.deleteIconButton} onPress={() => showDeleteConfirmation(item.id)} />
+        <TouchableOpacity disabled style={styles.deleteContainer}>
+        <AntDesign name="delete" size={18} color="black" style={styles.deleteIcon} onPress={() => showDeleteConfirmation(item.id)} />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -192,6 +194,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
     height: 49,
+  
+  },
+  likeContainer:{
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 5, 
+    width:30,
+    height: 30,              // Adjust padding for button size
+    position: 'absolute',       // Set absolute positioning
+    bottom: -25,                 // Set distance from the bottom of the card
+    right: -70,                  // Set distance from the right edge of the card
+    elevation: 5,    
   
   },
   headerContainer: {
@@ -299,15 +313,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 5,
   },
-  likeIconButton: {
-    backgroundColor: '#fff',
-    borderRadius: 20,
-    padding: 5,                // Adjust padding for button size
-    position: 'absolute',       // Set absolute positioning
-    bottom: -25,                 // Set distance from the bottom of the card
-    right: -70,                  // Set distance from the right edge of the card
-    elevation: 5,               // Add shadow effect for better visibility (optional)
-    zIndex: 1,     
+  IconButton: {
+               // Add shadow effect for better visibility (optional)
+    
   },
   likeCount: {
     fontSize: 16,
@@ -315,12 +323,20 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     fontWeight: 'bold',
     position: 'absolute',
-    right: -78,
-    bottom: -6,  
+    righbackgroundColor: '#fff',
+    borderRadius: 20,
+    padding: 5, 
+    width:30,
+    height: 30,              // Adjust padding for button size
+    position: 'absolute',       // Set absolute positioning
+    bottom: -25,                 // Set distance from the bottom of the card
+    right: -20,                  // Set distance from the right edge of the card
+    elevation: 5,    t: -78,
+    bottom: 13,  
     zIndex: 1, 
     elevation: 9,  
   },
-  deleteIconButton: {
+  deleteContainer: {
     backgroundColor: '#fff',
     borderRadius: 20,
     padding: 5,                // Adjust padding for button size
@@ -329,6 +345,9 @@ const styles = StyleSheet.create({
     left: -70,                  // Set distance from the right edge of the card
     elevation: 5,               // Add shadow effect for better visibility (optional)
     zIndex: 1,     
+  },
+  deleteIcon: {
+   
   },
   editIconButton: {
     borderRadius: 20,

@@ -82,7 +82,7 @@ const UserMealList = () => {
       </View>
       <View style={styles.mealActions}>
         {/* Like Button */}
-        <TouchableOpacity onPress={() => handleLike(item.id, item.likes)}>
+        <TouchableOpacity onPress={() => handleLike(item.id, item.likes)} style={styles.likeContainer}>
           <AntDesign
             name={likedMeals[item.id] ? 'like1' : 'like2'}
             size={18}
@@ -268,9 +268,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 5,
   },
-  likeIconButton: {
+  likeContainer: {
     backgroundColor: '#fff',
-    borderRadius: 20,
+    borderRadius: 40,
     padding: 5,
     elevation: 5,
     zIndex: 1, 

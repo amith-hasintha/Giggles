@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     footerText: {
-        fontSize: 12,
-        color: 'white',
+        fontSize: 14,
+        color: 'black',
         textAlign: 'center',
         marginBottom: 20,
     },

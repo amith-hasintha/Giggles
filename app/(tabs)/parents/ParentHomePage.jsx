@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         opacity: 0.9,
+       
     },
     fixedHeader: {
         position: 'absolute',
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     welcomeText: {
         fontSize: 30,
         fontWeight: '700',
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
     },
     gridContainer: {
@@ -145,9 +146,20 @@ const styles = StyleSheet.create({
         marginBottom: 60,
     },
     button: {
-        width: '40%',
-        margin: 10,
-        alignItems: 'center',
+        backgroundColor: '#96CBE9', // More opaque white background
+    borderRadius: 10,
+    margin: 10,
+    width: 160, // Adjusted width for a better touch target
+    height: 160, // Fixed height for uniformity
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+    elevation: 5, // Stronger shadow on Android
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+
     },
     icon: {
         width: 60,
@@ -157,7 +169,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontSize: 16,
         fontWeight: '500',
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
     },
     overlay: {
@@ -174,7 +186,7 @@ const styles = StyleSheet.create({
     studentIdText: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: 'white', // Change this color to match your design
+        color: 'black', // Change this color to match your design
     },
 });
 

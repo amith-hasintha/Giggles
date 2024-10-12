@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, Alert, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { db, storage } from '../../configs/FirebaseConfig';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import * as DocumentPicker from 'expo-document-picker';
@@ -95,6 +95,8 @@ const UpdateDailyUpdate = ({ route, navigation }) => {
         placeholder="Update Text"
         value={updateText}
         onChangeText={setUpdateText}
+        multiline
+        numberOfLines={4}
       />
 
       <TouchableOpacity style={styles.pickFileButton} onPress={pickDocument}>
@@ -108,7 +110,13 @@ const UpdateDailyUpdate = ({ route, navigation }) => {
         {attachment ? `Selected File: ${attachment.split('/').pop()}` : `Current Attachment: ${initialData.attachment?.split('/').pop() || 'None'}`}
       </Text>
 
-      <Button title={loading ? 'Updating...' : 'Update'} onPress={handleUpdate} disabled={loading} />
+      {loading ? (
+        <ActivityIndicator size="large" color="#4CAF50" style={styles.loader} />
+      ) : (
+        <TouchableOpacity style={styles.updateButton} onPress={handleUpdate}>
+          <Text style={styles.updateButtonText}>Update</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -117,33 +125,74 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    marginTop:250,
+    backgroundColor: '#f9f9f9',
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#333',
+    textAlign: 'center',
     marginBottom: 20,
   },
   input: {
-    height: 40,
-    borderColor: '#ccc',
+    height: 120,
+    borderColor: '#ddd',
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 10,
     marginBottom: 15,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: '#fff',
+    fontSize: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
   pickFileButton: {
     backgroundColor: '#4CAF50',
-    padding: 10,
+    padding: 12,
     borderRadius: 5,
     alignItems: 'center',
     marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
   pickFileButtonText: {
     color: '#fff',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   attachmentText: {
     marginBottom: 15,
-    color: '#333',
+    color: '#555',
+    fontStyle: 'italic',
+    fontSize: 14,
+  },
+  updateButton: {
+    backgroundColor: '#2196F3',
+    paddingVertical: 12,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
+  updateButtonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  loader: {
+    marginTop: 20,
   },
 });
 
